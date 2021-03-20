@@ -8,18 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		C8A93ABF2604143B00912C35 /* dCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93ABE2604143B00912C35 /* dCalcApp.swift */; };
-		C8A93AC12604143B00912C35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AC02604143B00912C35 /* ContentView.swift */; };
+		C8A93AC12604143B00912C35 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AC02604143B00912C35 /* MainView.swift */; };
 		C8A93AC32604143C00912C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A93AC22604143C00912C35 /* Assets.xcassets */; };
 		C8A93AC62604143C00912C35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A93AC52604143C00912C35 /* Preview Assets.xcassets */; };
+		C8A93AD12604176A00912C35 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AD02604176A00912C35 /* HomeView.swift */; };
+		C8A93AD42604177500912C35 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AD32604177500912C35 /* ListView.swift */; };
+		C8A93AD8260418C100912C35 /* HomeViewButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AD7260418C100912C35 /* HomeViewButtonStyle.swift */; };
+		C8A93ADD2604190A00912C35 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93ADC2604190A00912C35 /* Extensions.swift */; };
+		C8F0570E2604ED82002A8C39 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0570D2604ED82002A8C39 /* CustomTabBar.swift */; };
+		C8F0571126050571002A8C39 /* HomeViewSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0571026050571002A8C39 /* HomeViewSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C8A93ABB2604143B00912C35 /* dCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A93ABE2604143B00912C35 /* dCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dCalcApp.swift; sourceTree = "<group>"; };
-		C8A93AC02604143B00912C35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C8A93AC02604143B00912C35 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C8A93AC22604143C00912C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8A93AC52604143C00912C35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C8A93AC72604143C00912C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8A93AD02604176A00912C35 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C8A93AD32604177500912C35 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		C8A93AD7260418C100912C35 /* HomeViewButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewButtonStyle.swift; sourceTree = "<group>"; };
+		C8A93ADC2604190A00912C35 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C8F0570D2604ED82002A8C39 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		C8F0571026050571002A8C39 /* HomeViewSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +64,8 @@
 		C8A93ABD2604143B00912C35 /* dCalc */ = {
 			isa = PBXGroup;
 			children = (
+				C8A93ACE260416E900912C35 /* View */,
 				C8A93ABE2604143B00912C35 /* dCalcApp.swift */,
-				C8A93AC02604143B00912C35 /* ContentView.swift */,
 				C8A93AC22604143C00912C35 /* Assets.xcassets */,
 				C8A93AC72604143C00912C35 /* Info.plist */,
 				C8A93AC42604143C00912C35 /* Preview Content */,
@@ -67,6 +79,44 @@
 				C8A93AC52604143C00912C35 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C8A93ACE260416E900912C35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8F0570C2604ED6D002A8C39 /* MainViews */,
+				C8A93ADB260418CB00912C35 /* Util */,
+				C8A93AD6260418A200912C35 /* HomeViews */,
+				C8A93AD32604177500912C35 /* ListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C8A93AD6260418A200912C35 /* HomeViews */ = {
+			isa = PBXGroup;
+			children = (
+				C8A93AD02604176A00912C35 /* HomeView.swift */,
+				C8F0571026050571002A8C39 /* HomeViewSlider.swift */,
+				C8A93AD7260418C100912C35 /* HomeViewButtonStyle.swift */,
+			);
+			path = HomeViews;
+			sourceTree = "<group>";
+		};
+		C8A93ADB260418CB00912C35 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C8A93ADC2604190A00912C35 /* Extensions.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		C8F0570C2604ED6D002A8C39 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				C8A93AC02604143B00912C35 /* MainView.swift */,
+				C8F0570D2604ED82002A8C39 /* CustomTabBar.swift */,
+			);
+			path = MainViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +188,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8A93AC12604143B00912C35 /* ContentView.swift in Sources */,
+				C8A93AD42604177500912C35 /* ListView.swift in Sources */,
+				C8A93ADD2604190A00912C35 /* Extensions.swift in Sources */,
+				C8F0570E2604ED82002A8C39 /* CustomTabBar.swift in Sources */,
+				C8A93AD8260418C100912C35 /* HomeViewButtonStyle.swift in Sources */,
+				C8A93AD12604176A00912C35 /* HomeView.swift in Sources */,
+				C8A93AC12604143B00912C35 /* MainView.swift in Sources */,
+				C8F0571126050571002A8C39 /* HomeViewSlider.swift in Sources */,
 				C8A93ABF2604143B00912C35 /* dCalcApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
