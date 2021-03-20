@@ -8,7 +8,8 @@
 import SwiftUI
 
 extension Color {
-    static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
+    static let whiteStart = Color(red: 235 / 255, green: 235 / 255, blue: 240 / 255)
+    static let whiteEnd = Color(red: 200 / 255, green: 200 / 255, blue: 205 / 255)
     static let darkStart = Color(red: 50 / 255, green: 60 / 255, blue: 65 / 255)
     static let darkEnd = Color(red: 25 / 255, green: 25 / 255, blue: 30 / 255)
 }
@@ -16,5 +17,11 @@ extension Color {
 extension LinearGradient {
     init(_ colors: Color...) {
         self.init(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
+}
+
+extension View {
+    func show(isVisible: Binding<Bool>) -> some View {
+        ModifiedContent(content: self, modifier: Show(isVisible: isVisible))
     }
 }
