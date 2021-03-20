@@ -8,22 +8,27 @@
 import SwiftUI
 
 struct CustomTabBar: View {
+    
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @Binding var selectedIndex: Int
+    
     let tabBarImages = ["house", "list.dash"]
     var spacing: CGFloat
     
     var body: some View {
         HStack(spacing: spacing) {
             ForEach(0 ..< 2) { num in
-                Image(systemName: tabBarImages[num])
-                    .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(selectedIndex == num ? Color.white : Color.blue)
-                    .padding(20)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        selectedIndex = num
-                    }
-                
+                Button(action: {
+                    selectedIndex = num
+                }) {
+                    Image(systemName: tabBarImages[num])
+                        .font(.system(size: 24, weight: .bold))
+                        .foregroundColor(selectedIndex == num ?
+                                            (colorScheme == .light ? Color.black: Color.white) :
+                                            Color.blue)
+                }
+                .buttonStyle(NeumorphicButtonStyle(paddingSize: 12, color: colorScheme == .light ? .light : .dark))
             }
         }
     }
