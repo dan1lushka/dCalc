@@ -11,13 +11,13 @@ import SwiftUI
 //TODO: add logic to jump between views
 struct MainView: View {
     
+    
+    
     @State var selectedIndex = 0
-    
-   
-    
+
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+//            VStack {
                 ZStack {
                     switch selectedIndex {
                     case 0:
@@ -33,10 +33,10 @@ struct MainView: View {
                     
                     VStack {
                         Spacer()
-                        CustomTabBar(selectedIndex: $selectedIndex, spacing: geometry.size.width * 0.5)
+                        CustomTabBar(selectedIndex: $selectedIndex, spacing: geometry.size.width * 0.6)
                     }
                 }
-            }
+//            }
         }
     }
 }
