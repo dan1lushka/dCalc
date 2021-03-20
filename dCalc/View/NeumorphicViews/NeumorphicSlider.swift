@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-//TODO: Add depth effects
-struct HomeViewSlider: View {
+//TODO: add depth effect to slider like for button
+struct NeumorphicSlider: View {
     
     let okRange = 4.0 ..< 11.0
+    var color: ColorScheme
     var range: ClosedRange<Double>
     var label: String
     
@@ -18,19 +19,19 @@ struct HomeViewSlider: View {
     
     var body: some View {
         ZStack {
+            
+            NeumorphicBackground(color: color, isHighlighted: false, shape: Rectangle())
+                .frame(height: 100)
+                .cornerRadius(20)
+                .padding(.horizontal, 10)
+                
             Text("\(label): \(String(format: "%.1f", sliderValue)) mmol")
                 .foregroundColor(okRange ~= sliderValue ? .blue : .red)
                 .font(.system(size: 15, weight: .bold))
                 .padding(.bottom, 55)
             
             Slider(value: $sliderValue, in: range, step: 0.1)
-                .padding(30)
                 .accentColor(Color.blue)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15.0)
-                        .stroke(lineWidth: 2.0)
-                        .foregroundColor(Color.blue)
-                )
                 .padding(.horizontal, 10)
         }
     }
@@ -38,6 +39,9 @@ struct HomeViewSlider: View {
 
 struct HomeViewSlider_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewSlider(range: 2.0 ... 40.0, label: "Sugar Level", sliderValue: .constant(5.0))
+        ZStack {
+            LinearGradient( .whiteStart, .whiteEnd)
+            NeumorphicSlider(color: ColorScheme.light, range: 2.0 ... 40.0, label: "Sugar Level", sliderValue: .constant(10.0))
+        }
     }
 }
