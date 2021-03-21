@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C81AA38D2607A7BF00313402 /* HomeViewSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AA38C2607A7BF00313402 /* HomeViewSlider.swift */; };
+		C81AA3902607A83400313402 /* HomeViewAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AA38F2607A83400313402 /* HomeViewAddButton.swift */; };
+		C81AA3932607A86B00313402 /* HomeViewExtraButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AA3922607A86B00313402 /* HomeViewExtraButtons.swift */; };
 		C8A93ABF2604143B00912C35 /* dCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93ABE2604143B00912C35 /* dCalcApp.swift */; };
 		C8A93AC12604143B00912C35 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AC02604143B00912C35 /* MainView.swift */; };
 		C8A93AC32604143C00912C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A93AC22604143C00912C35 /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C81AA38C2607A7BF00313402 /* HomeViewSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSlider.swift; sourceTree = "<group>"; };
+		C81AA38F2607A83400313402 /* HomeViewAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewAddButton.swift; sourceTree = "<group>"; };
+		C81AA3922607A86B00313402 /* HomeViewExtraButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewExtraButtons.swift; sourceTree = "<group>"; };
 		C8A93ABB2604143B00912C35 /* dCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A93ABE2604143B00912C35 /* dCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dCalcApp.swift; sourceTree = "<group>"; };
 		C8A93AC02604143B00912C35 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -101,6 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				C8A93AD02604176A00912C35 /* HomeView.swift */,
+				C81AA3922607A86B00313402 /* HomeViewExtraButtons.swift */,
+				C81AA38F2607A83400313402 /* HomeViewAddButton.swift */,
+				C81AA38C2607A7BF00313402 /* HomeViewSlider.swift */,
 			);
 			path = HomeViews;
 			sourceTree = "<group>";
@@ -209,9 +218,12 @@
 				C8F0570E2604ED82002A8C39 /* CustomTabBar.swift in Sources */,
 				C8A93AD8260418C100912C35 /* NeumorphicButtonStyle.swift in Sources */,
 				C8A93AD12604176A00912C35 /* HomeView.swift in Sources */,
+				C81AA3902607A83400313402 /* HomeViewAddButton.swift in Sources */,
 				C8A93AC12604143B00912C35 /* MainView.swift in Sources */,
+				C81AA38D2607A7BF00313402 /* HomeViewSlider.swift in Sources */,
 				C8F0571126050571002A8C39 /* NeumorphicSlider.swift in Sources */,
 				C8A93ABF2604143B00912C35 /* dCalcApp.swift in Sources */,
+				C81AA3932607A86B00313402 /* HomeViewExtraButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
