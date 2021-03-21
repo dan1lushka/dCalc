@@ -34,7 +34,7 @@ struct NeumorphicSlider: View {
     }
 }
 
-struct HomeViewSlider_Previews: PreviewProvider {
+struct NeumorphicSlider_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             LinearGradient( .whiteStart, .whiteEnd)
