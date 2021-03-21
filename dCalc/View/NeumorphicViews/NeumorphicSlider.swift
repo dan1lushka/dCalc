@@ -19,20 +19,17 @@ struct NeumorphicSlider: View {
     
     var body: some View {
         ZStack {
-            
-            NeumorphicBackground(color: color, isHighlighted: false, shape: Rectangle())
+            Slider(value: $sliderValue, in: range, step: 0.1)
                 .frame(height: 100)
+                .accentColor(Color.blue)
+                .background(NeumorphicBackground(color: color, isHighlighted: false, shape: Rectangle()))
                 .cornerRadius(20)
                 .padding(.horizontal, 10)
-                
+            
             Text("\(label): \(String(format: "%.1f", sliderValue)) mmol")
                 .foregroundColor(okRange ~= sliderValue ? .blue : .red)
                 .font(.system(size: 15, weight: .bold))
                 .padding(.bottom, 55)
-            
-            Slider(value: $sliderValue, in: range, step: 0.1)
-                .accentColor(Color.blue)
-                .padding(.horizontal, 10)
         }
     }
 }
