@@ -13,6 +13,7 @@ struct HomeView: View {
     
     @State private var currentSugarLevel: Double = 5.5
     @State private var targetSugarLevel: Double = 5.5
+    @State private var carbsPerUnitOfInsuline: Double = 10.0
     @State private var showButtons = false
     
     var body: some View {
@@ -22,10 +23,28 @@ struct HomeView: View {
                 colorScheme == .light ? LinearGradient(.whiteStart, .whiteEnd) : LinearGradient(.darkStart, .darkEnd)
                 
                 VStack {
-                    Spacer()
-                        .frame(height: geometry.size.height * 0.45)
-                    
-                    HomeViewSlider(currentSugarLevel: $currentSugarLevel, targetSugarLevel: $targetSugarLevel, colorScheme: colorScheme)
+                    ZStack {
+                        
+                        //TODO: finish top view with calculate button and insuline dosage label
+                        NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle())
+                            .cornerRadius(20)
+                            .padding(.horizontal, 10)
+                            .frame(height: 100)
+                        HStack {
+                            Button(action: {
+                                
+                            }) {
+                                Image(systemName: "equal")
+                                    .font(.system(size: 35, weight: .regular))
+                                    .foregroundColor(.blue)
+                            }
+                            .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme == .light ? .light : .dark))
+                            .padding()
+                            NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Circle())
+                                .frame(height: 80)
+                        }
+                    }
+                    HomeViewSlider(currentSugarLevel: $currentSugarLevel, targetSugarLevel: $targetSugarLevel, carbsPerUnitOfInsuline: $carbsPerUnitOfInsuline, colorScheme: colorScheme)
                     
                     HomeViewExtraButtons(showButtons: $showButtons, colorScheme: colorScheme)
                     

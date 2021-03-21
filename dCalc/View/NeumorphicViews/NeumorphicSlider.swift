@@ -14,23 +14,22 @@ struct NeumorphicSlider: View {
     var color: ColorScheme
     var range: ClosedRange<Double>
     var label: String
+    var step: Double
+    var unitsOfMeasure: String
     
     @Binding var sliderValue: Double
     
     var body: some View {
         ZStack {
-            Slider(value: $sliderValue, in: range, step: 0.1)
-                .frame(height: 100)
+            Slider(value: $sliderValue, in: range, step: step)
                 .accentColor(Color.blue)
-                .background(NeumorphicBackground(color: color, isHighlighted: false, shape: Rectangle()))
-                .cornerRadius(20)
-                .padding(.horizontal, 10)
             
-            Text("\(label): \(String(format: "%.1f", sliderValue)) mmol")
-                .foregroundColor(okRange ~= sliderValue ? .blue : .red)
+            Text("\(label): \(String(format: "%.1f", sliderValue)) \(unitsOfMeasure)")
+                .foregroundColor(unitsOfMeasure == "g" ? .blue : okRange ~= sliderValue ? .blue : .red)
                 .font(.system(size: 15, weight: .bold))
-                .padding(.bottom, 55)
+                .offset(x: 0, y: -30)
         }
+        .padding()
     }
 }
 
@@ -38,7 +37,7 @@ struct NeumorphicSlider_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             LinearGradient( .whiteStart, .whiteEnd)
-            NeumorphicSlider(color: ColorScheme.light, range: 2.0 ... 40.0, label: "Sugar Level", sliderValue: .constant(10.0))
+            NeumorphicSlider(color: ColorScheme.light, range: 2.0 ... 40.0, label: "Sugar Level", step: 0.1, unitsOfMeasure: "mmol", sliderValue: .constant(10.0))
         }
     }
 }
