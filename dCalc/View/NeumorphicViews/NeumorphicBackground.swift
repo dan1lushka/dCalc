@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NeumorphicBackground<S: Shape>: View {
+    
     var color: ColorScheme
     var isHighlighted: Bool
     var shape: S
@@ -15,31 +16,17 @@ struct NeumorphicBackground<S: Shape>: View {
     var body: some View {
         ZStack {
             if isHighlighted {
-                if color == .dark {
-                    shape
-                        .fill(LinearGradient(Color.darkEnd, Color.darkStart))
-                        .overlay(shape.stroke(LinearGradient(Color.darkStart, Color.darkEnd), lineWidth: 2))
-                        .shadow(color: Color.darkStart, radius: 5, x: 5, y: 5)
-                        .shadow(color: Color.darkEnd, radius: 5, x: -5, y: -5)
-                } else {
-                    shape
-                        .fill(LinearGradient(Color.whiteEnd, Color.whiteStart))
-                        .overlay(shape.stroke(LinearGradient(Color.whiteStart, Color.whiteEnd), lineWidth: 2))
-                        .shadow(color: Color.whiteStart, radius: 5, x: 5, y: 5)
-                        .shadow(color: Color.whiteEnd, radius: 5, x: -5, y: -5)
-                }
+                shape
+                    .fill(color == .dark ? LinearGradient(Color.darkEnd, Color.darkStart) : LinearGradient(Color.whiteEnd, Color.whiteStart))
+                    .overlay(shape.stroke(color == .dark ? LinearGradient(Color.darkStart, Color.darkEnd) : LinearGradient(Color.whiteStart, Color.whiteEnd), lineWidth: 2))
+                    .shadow(color: color == .dark ? Color.darkStart : Color.whiteStart, radius: 5, x: 5, y: 5)
+                    .shadow(color: color == .dark ? Color.darkEnd : Color.whiteEnd, radius: 5, x: -5, y: -5)
+                
             } else {
-                if color == .dark {
-                    shape
-                        .fill(LinearGradient(Color.darkStart, Color.darkEnd))
-                        .shadow(color: Color.darkStart, radius: 5, x: -5, y: -5)
-                        .shadow(color: Color.darkEnd, radius: 5, x: 5, y: 5)
-                } else {
-                    shape
-                        .fill(LinearGradient(Color.whiteStart, Color.whiteEnd))
-                        .shadow(color: Color.whiteStart, radius: 5, x: -5, y: -5)
-                        .shadow(color: Color.whiteEnd, radius: 5, x: 5, y: 5)
-                }
+                shape
+                    .fill(color == .dark ? LinearGradient(Color.darkStart, Color.darkEnd) : LinearGradient(Color.whiteStart, Color.whiteEnd))
+                    .shadow(color: color == .dark ? Color.darkStart : Color.whiteStart, radius: 5, x: -5, y: -5)
+                    .shadow(color: color == .dark ? Color.darkEnd : Color.whiteEnd, radius: 5, x: 5, y: 5)
             }
         }
         .animation(nil)
