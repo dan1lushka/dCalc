@@ -22,10 +22,10 @@ struct NeumorphicSlider: View {
     var body: some View {
         ZStack {
             Slider(value: $sliderValue, in: range, step: step)
-                .accentColor(Color.blue)
+                .accentColor(.cornBlue)
             
             Text("\(label): \(String(format: "%.1f", sliderValue)) \(unitsOfMeasure)")
-                .foregroundColor(unitsOfMeasure == "g" ? .blue : okRange ~= sliderValue ? .blue : .red)
+                .foregroundColor(unitsOfMeasure == "g" ? .cornBlue : okRange ~= sliderValue ? .cornBlue : .red)
                 .font(.system(size: 15, weight: .bold))
                 .offset(x: 0, y: -30)
         }

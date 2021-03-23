@@ -14,12 +14,10 @@ struct HomeViewAddButton: View {
     var colorScheme: ColorScheme
     
     var body: some View {
-        Button(action: {
-            
-        }) {
+        Button(action: {}) {
             Image(systemName: "plus")
                 .font(.system(size: 35, weight: .regular))
-                .foregroundColor(.blue)
+                .foregroundColor(.cornBlue)
         }
         .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme == .light ? .light : .dark))
         .simultaneousGesture(LongPressGesture(minimumDuration: 0.3).onEnded { _ in

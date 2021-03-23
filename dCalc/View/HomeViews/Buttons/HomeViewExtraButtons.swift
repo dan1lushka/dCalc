@@ -23,7 +23,7 @@ struct HomeViewExtraButtons: View {
                     }) {
                         Image(systemName: buttonImages[num])
                             .font(.system(size: 25, weight: .regular))
-                            .foregroundColor(.blue)
+                            .foregroundColor(.cornBlue)
                     }
                     .buttonStyle(NeumorphicButtonStyle(paddingSize: 15, color: (colorScheme == .light ? .light : .dark)))
                     .padding()

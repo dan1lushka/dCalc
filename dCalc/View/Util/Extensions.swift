@@ -12,6 +12,7 @@ extension Color {
     static let whiteEnd = Color(red: 200 / 255, green: 200 / 255, blue: 205 / 255)
     static let darkStart = Color(red: 50 / 255, green: 60 / 255, blue: 65 / 255)
     static let darkEnd = Color(red: 25 / 255, green: 25 / 255, blue: 30 / 255)
+    static let cornBlue = Color(red: 100 / 255, green: 149 / 255, blue: 237 / 255)
 }
 
 extension LinearGradient {

@@ -25,8 +25,8 @@ struct CustomTabBar: View {
                     Image(systemName: tabBarImages[num])
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(selectedIndex == num ?
-                                            (colorScheme == .light ? Color.black: Color.white) :
-                                            Color.blue)
+                                            (colorScheme == .light ? .black: .white) :
+                                            .cornBlue)
                 }
                 .buttonStyle(NeumorphicButtonStyle(paddingSize: 12, color: colorScheme == .light ? .light : .dark))
             }
