@@ -18,6 +18,9 @@
 		C8A93AD42604177500912C35 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AD32604177500912C35 /* ListView.swift */; };
 		C8A93AD8260418C100912C35 /* NeumorphicButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AD7260418C100912C35 /* NeumorphicButtonStyle.swift */; };
 		C8A93ADD2604190A00912C35 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93ADC2604190A00912C35 /* Extensions.swift */; };
+		C8C9D2262609A3DB00A595F1 /* HomeViewCalculationTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C9D2252609A3DB00A595F1 /* HomeViewCalculationTab.swift */; };
+		C8C9D2292609A43800A595F1 /* HomeViewCalculateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C9D2282609A43800A595F1 /* HomeViewCalculateButton.swift */; };
+		C8C9D22C2609A45700A595F1 /* HomeViewDosageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C9D22B2609A45700A595F1 /* HomeViewDosageLabel.swift */; };
 		C8E3D16C2606337A0001479F /* NeumorphicBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E3D16B2606337A0001479F /* NeumorphicBackground.swift */; };
 		C8F0570E2604ED82002A8C39 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0570D2604ED82002A8C39 /* CustomTabBar.swift */; };
 		C8F0571126050571002A8C39 /* NeumorphicSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0571026050571002A8C39 /* NeumorphicSlider.swift */; };
@@ -38,6 +41,9 @@
 		C8A93AD32604177500912C35 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		C8A93AD7260418C100912C35 /* NeumorphicButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicButtonStyle.swift; sourceTree = "<group>"; };
 		C8A93ADC2604190A00912C35 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C8C9D2252609A3DB00A595F1 /* HomeViewCalculationTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCalculationTab.swift; sourceTree = "<group>"; };
+		C8C9D2282609A43800A595F1 /* HomeViewCalculateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCalculateButton.swift; sourceTree = "<group>"; };
+		C8C9D22B2609A45700A595F1 /* HomeViewDosageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDosageLabel.swift; sourceTree = "<group>"; };
 		C8E3D16B2606337A0001479F /* NeumorphicBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicBackground.swift; sourceTree = "<group>"; };
 		C8F0570D2604ED82002A8C39 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		C8F0571026050571002A8C39 /* NeumorphicSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicSlider.swift; sourceTree = "<group>"; };
@@ -106,9 +112,10 @@
 		C8A93AD6260418A200912C35 /* HomeViews */ = {
 			isa = PBXGroup;
 			children = (
+				C8C9D22E2609A7E200A595F1 /* Buttons */,
 				C8A93AD02604176A00912C35 /* HomeView.swift */,
-				C81AA3922607A86B00313402 /* HomeViewExtraButtons.swift */,
-				C81AA38F2607A83400313402 /* HomeViewAddButton.swift */,
+				C8C9D22B2609A45700A595F1 /* HomeViewDosageLabel.swift */,
+				C8C9D2252609A3DB00A595F1 /* HomeViewCalculationTab.swift */,
 				C81AA38C2607A7BF00313402 /* HomeViewSlider.swift */,
 			);
 			path = HomeViews;
@@ -121,6 +128,16 @@
 				C8F0571326058279002A8C39 /* ShowModifier.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		C8C9D22E2609A7E200A595F1 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				C81AA3922607A86B00313402 /* HomeViewExtraButtons.swift */,
+				C81AA38F2607A83400313402 /* HomeViewAddButton.swift */,
+				C8C9D2282609A43800A595F1 /* HomeViewCalculateButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		C8E3D1712606341E0001479F /* NeumorphicViews */ = {
@@ -222,6 +239,9 @@
 				C8A93AC12604143B00912C35 /* MainView.swift in Sources */,
 				C81AA38D2607A7BF00313402 /* HomeViewSlider.swift in Sources */,
 				C8F0571126050571002A8C39 /* NeumorphicSlider.swift in Sources */,
+				C8C9D22C2609A45700A595F1 /* HomeViewDosageLabel.swift in Sources */,
+				C8C9D2292609A43800A595F1 /* HomeViewCalculateButton.swift in Sources */,
+				C8C9D2262609A3DB00A595F1 /* HomeViewCalculationTab.swift in Sources */,
 				C8A93ABF2604143B00912C35 /* dCalcApp.swift in Sources */,
 				C81AA3932607A86B00313402 /* HomeViewExtraButtons.swift in Sources */,
 			);
@@ -352,6 +372,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dCalc/Preview Content\"";
 				DEVELOPMENT_TEAM = P92M2Q4MMM;
 				ENABLE_PREVIEWS = YES;
@@ -361,6 +382,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.DanielRybak.dCalc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -374,6 +396,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dCalc/Preview Content\"";
 				DEVELOPMENT_TEAM = P92M2Q4MMM;
 				ENABLE_PREVIEWS = YES;
@@ -383,6 +406,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.DanielRybak.dCalc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
