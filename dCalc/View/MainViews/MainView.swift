@@ -10,10 +10,8 @@ import SwiftUI
 
 //TODO: add logic to jump between views
 struct MainView: View {
-    
-    
-    
-    @State var selectedIndex = 0
+
+    @Binding var selectedIndex: Int
 
     var body: some View {
         GeometryReader { geometry in
@@ -45,7 +43,11 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        Group {
+            MainView(selectedIndex: .constant(0))
+            MainView(selectedIndex: .constant(1))
+        }
+        
     }
 }
 
