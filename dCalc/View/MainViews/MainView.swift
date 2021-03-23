@@ -23,11 +23,13 @@ struct MainView: View {
                     case 0:
                         NavigationView {
                             HomeView()
+                                .navigationTitle("Home")
                         }
                         
                     default:
                         NavigationView {
                             ListView()
+                                .navigationTitle("List")
                         }
                     }
                     

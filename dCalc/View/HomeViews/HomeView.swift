@@ -25,7 +25,7 @@ struct HomeView: View {
                 
                 VStack {
                     Spacer()
-                        .frame(height: geometry.size.height * 0.15)
+                        .frame(height: geometry.size.height * 0.20)
                     HomeViewCalculationTab(dosage: $dosage, colorScheme: colorScheme)
                     Spacer()
                         .frame(height: geometry.size.height * 0.1)
