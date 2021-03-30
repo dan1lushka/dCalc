@@ -10,22 +10,16 @@ import SwiftUI
 struct MainView: View {
     
     @Binding var selectedIndex: Int
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 switch selectedIndex {
                 case 0:
-                    NavigationView {
-                        HomeView()
-                            .navigationTitle("Home")
-                    }
-                    
+                    HomeView(colorScheme: colorScheme)
                 default:
-                    NavigationView {
-                        ListView()
-                            .navigationTitle("List")
-                    }
+                    ListView(colorScheme: colorScheme)
                 }
                 
                 VStack {
