@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C81AA38D2607A7BF00313402 /* HomeViewSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AA38C2607A7BF00313402 /* HomeViewSlider.swift */; };
+		C81AA38D2607A7BF00313402 /* HomeViewSliderPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AA38C2607A7BF00313402 /* HomeViewSliderPanel.swift */; };
 		C81AA3902607A83400313402 /* HomeViewAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AA38F2607A83400313402 /* HomeViewAddButton.swift */; };
 		C81AA3932607A86B00313402 /* HomeViewExtraButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AA3922607A86B00313402 /* HomeViewExtraButtons.swift */; };
 		C8A93ABF2604143B00912C35 /* dCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93ABE2604143B00912C35 /* dCalcApp.swift */; };
@@ -18,17 +18,18 @@
 		C8A93AD42604177500912C35 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AD32604177500912C35 /* ListView.swift */; };
 		C8A93AD8260418C100912C35 /* NeumorphicButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AD7260418C100912C35 /* NeumorphicButtonStyle.swift */; };
 		C8A93ADD2604190A00912C35 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93ADC2604190A00912C35 /* Extensions.swift */; };
-		C8C9D2262609A3DB00A595F1 /* HomeViewCalculationTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C9D2252609A3DB00A595F1 /* HomeViewCalculationTab.swift */; };
+		C8C9D2262609A3DB00A595F1 /* HomeViewCalculationPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C9D2252609A3DB00A595F1 /* HomeViewCalculationPanel.swift */; };
 		C8C9D2292609A43800A595F1 /* HomeViewCalculateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C9D2282609A43800A595F1 /* HomeViewCalculateButton.swift */; };
 		C8C9D22C2609A45700A595F1 /* HomeViewDosageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C9D22B2609A45700A595F1 /* HomeViewDosageLabel.swift */; };
 		C8E3D16C2606337A0001479F /* NeumorphicBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E3D16B2606337A0001479F /* NeumorphicBackground.swift */; };
 		C8F0570E2604ED82002A8C39 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0570D2604ED82002A8C39 /* CustomTabBar.swift */; };
 		C8F0571126050571002A8C39 /* NeumorphicSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0571026050571002A8C39 /* NeumorphicSlider.swift */; };
 		C8F0571426058279002A8C39 /* ShowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0571326058279002A8C39 /* ShowModifier.swift */; };
+		C8F36DD1260B288600F8E4BE /* ViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F36DD0260B288600F8E4BE /* ViewHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C81AA38C2607A7BF00313402 /* HomeViewSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSlider.swift; sourceTree = "<group>"; };
+		C81AA38C2607A7BF00313402 /* HomeViewSliderPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSliderPanel.swift; sourceTree = "<group>"; };
 		C81AA38F2607A83400313402 /* HomeViewAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewAddButton.swift; sourceTree = "<group>"; };
 		C81AA3922607A86B00313402 /* HomeViewExtraButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewExtraButtons.swift; sourceTree = "<group>"; };
 		C8A93ABB2604143B00912C35 /* dCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,13 +42,14 @@
 		C8A93AD32604177500912C35 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		C8A93AD7260418C100912C35 /* NeumorphicButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicButtonStyle.swift; sourceTree = "<group>"; };
 		C8A93ADC2604190A00912C35 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		C8C9D2252609A3DB00A595F1 /* HomeViewCalculationTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCalculationTab.swift; sourceTree = "<group>"; };
+		C8C9D2252609A3DB00A595F1 /* HomeViewCalculationPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCalculationPanel.swift; sourceTree = "<group>"; };
 		C8C9D2282609A43800A595F1 /* HomeViewCalculateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCalculateButton.swift; sourceTree = "<group>"; };
 		C8C9D22B2609A45700A595F1 /* HomeViewDosageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDosageLabel.swift; sourceTree = "<group>"; };
 		C8E3D16B2606337A0001479F /* NeumorphicBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicBackground.swift; sourceTree = "<group>"; };
 		C8F0570D2604ED82002A8C39 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		C8F0571026050571002A8C39 /* NeumorphicSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicSlider.swift; sourceTree = "<group>"; };
 		C8F0571326058279002A8C39 /* ShowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModifier.swift; sourceTree = "<group>"; };
+		C8F36DD0260B288600F8E4BE /* ViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,7 @@
 		C8A93ACE260416E900912C35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C8C9D2312609F7C800A595F1 /* ListViews */,
+				C8C9D2312609F7C800A595F1 /* ListView */,
 				C8E3D1712606341E0001479F /* NeumorphicViews */,
 				C8F0570C2604ED6D002A8C39 /* MainViews */,
 				C8A93ADB260418CB00912C35 /* Util */,
@@ -115,8 +117,8 @@
 				C8C9D22E2609A7E200A595F1 /* Buttons */,
 				C8A93AD02604176A00912C35 /* HomeView.swift */,
 				C8C9D22B2609A45700A595F1 /* HomeViewDosageLabel.swift */,
-				C8C9D2252609A3DB00A595F1 /* HomeViewCalculationTab.swift */,
-				C81AA38C2607A7BF00313402 /* HomeViewSlider.swift */,
+				C8C9D2252609A3DB00A595F1 /* HomeViewCalculationPanel.swift */,
+				C81AA38C2607A7BF00313402 /* HomeViewSliderPanel.swift */,
 			);
 			path = HomeViews;
 			sourceTree = "<group>";
@@ -140,12 +142,12 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
-		C8C9D2312609F7C800A595F1 /* ListViews */ = {
+		C8C9D2312609F7C800A595F1 /* ListView */ = {
 			isa = PBXGroup;
 			children = (
 				C8A93AD32604177500912C35 /* ListView.swift */,
 			);
-			path = ListViews;
+			path = ListView;
 			sourceTree = "<group>";
 		};
 		C8E3D1712606341E0001479F /* NeumorphicViews */ = {
@@ -163,6 +165,7 @@
 			children = (
 				C8A93AC02604143B00912C35 /* MainView.swift */,
 				C8F0570D2604ED82002A8C39 /* CustomTabBar.swift */,
+				C8F36DD0260B288600F8E4BE /* ViewHeader.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -245,11 +248,12 @@
 				C8A93AD12604176A00912C35 /* HomeView.swift in Sources */,
 				C81AA3902607A83400313402 /* HomeViewAddButton.swift in Sources */,
 				C8A93AC12604143B00912C35 /* MainView.swift in Sources */,
-				C81AA38D2607A7BF00313402 /* HomeViewSlider.swift in Sources */,
+				C81AA38D2607A7BF00313402 /* HomeViewSliderPanel.swift in Sources */,
 				C8F0571126050571002A8C39 /* NeumorphicSlider.swift in Sources */,
 				C8C9D22C2609A45700A595F1 /* HomeViewDosageLabel.swift in Sources */,
 				C8C9D2292609A43800A595F1 /* HomeViewCalculateButton.swift in Sources */,
-				C8C9D2262609A3DB00A595F1 /* HomeViewCalculationTab.swift in Sources */,
+				C8C9D2262609A3DB00A595F1 /* HomeViewCalculationPanel.swift in Sources */,
+				C8F36DD1260B288600F8E4BE /* ViewHeader.swift in Sources */,
 				C8A93ABF2604143B00912C35 /* dCalcApp.swift in Sources */,
 				C81AA3932607A86B00313402 /* HomeViewExtraButtons.swift in Sources */,
 			);
