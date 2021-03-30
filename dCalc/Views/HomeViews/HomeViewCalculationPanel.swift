@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeViewCalculationTab: View {
+struct HomeViewCalculationPanel: View {
     
     @Binding var dosage: Int
     
@@ -32,6 +32,6 @@ struct HomeViewCalculationTab: View {
 
 struct HomeViewCalculationTab_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewCalculationTab(dosage: .constant(2), colorScheme: .light)
+        HomeViewCalculationPanel(dosage: .constant(2), colorScheme: .light)
     }
 }
