@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    var colorScheme: ColorScheme
     
     @State private var currentSugarLevel: Double = 5.5
     @State private var targetSugarLevel: Double = 5.5
@@ -24,12 +24,12 @@ struct HomeView: View {
                 colorScheme == .light ? LinearGradient(.whiteStart, .whiteEnd) : LinearGradient(.darkStart, .darkEnd)
                 
                 VStack {
-                    Spacer()
-                        .frame(height: geometry.size.height * 0.20)
-                    HomeViewCalculationTab(dosage: $dosage, colorScheme: colorScheme)
+                    ViewHeader(width: geometry.size.width * 0.95, text: "Home")
+
+                    HomeViewCalculationPanel(dosage: $dosage, colorScheme: colorScheme)
                     Spacer()
                         .frame(height: geometry.size.height * 0.1)
-                    HomeViewSlider(currentSugarLevel: $currentSugarLevel, targetSugarLevel: $targetSugarLevel, carbsPerUnitOfInsuline: $carbsPerUnitOfInsuline, colorScheme: colorScheme)
+                    HomeViewSliderPanel(currentSugarLevel: $currentSugarLevel, targetSugarLevel: $targetSugarLevel, carbsPerUnitOfInsuline: $carbsPerUnitOfInsuline, colorScheme: colorScheme)
                     Spacer()
                     HomeViewExtraButtons(showButtons: $showButtons, colorScheme: colorScheme)
                     Spacer()
@@ -48,6 +48,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(colorScheme: .light)
     }
 }
