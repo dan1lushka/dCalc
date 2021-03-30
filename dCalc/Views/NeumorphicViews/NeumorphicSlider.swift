@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-//TODO: add depth effect to slider like for button
 struct NeumorphicSlider: View {
     
     let okRange = 4.0 ..< 11.0

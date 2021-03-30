@@ -20,19 +20,19 @@ struct HomeViewAddButton: View {
                 .foregroundColor(.cornBlue)
         }
         .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme == .light ? .light : .dark))
-        .simultaneousGesture(LongPressGesture(minimumDuration: 0.3).onEnded { _ in
-            let impact = UIImpactFeedbackGenerator(style: .heavy)
-            impact.impactOccurred()
-            
-            withAnimation {
-                showButtons = true
-            }
-            
-            print("long press Action!")
-        })
-        .simultaneousGesture(TapGesture().onEnded {
-            print("tap Action!")
-        })
+        .simultaneousGesture(LongPressGesture(minimumDuration: 0.3)
+                                .onEnded { _ in
+                                    let impact = UIImpactFeedbackGenerator(style: .heavy)
+                                    impact.impactOccurred()
+                                    
+                                    showButtons = true
+                                    
+                                    print("long press Action!")
+                                })
+        .simultaneousGesture(TapGesture()
+                                .onEnded {
+                                    print("tap Action!")
+                                })
     }
 }
 

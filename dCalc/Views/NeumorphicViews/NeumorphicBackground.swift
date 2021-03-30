@@ -17,16 +17,24 @@ struct NeumorphicBackground<S: Shape>: View {
         ZStack {
             if isHighlighted {
                 shape
-                    .fill(color == .dark ? LinearGradient(Color.darkEnd, Color.darkStart) : LinearGradient(Color.whiteEnd, Color.whiteStart))
-                    .overlay(shape.stroke(color == .dark ? LinearGradient(Color.darkStart, Color.darkEnd) : LinearGradient(Color.whiteStart, Color.whiteEnd), lineWidth: 2))
-                    .shadow(color: color == .dark ? Color.darkStart : Color.whiteStart, radius: 5, x: 5, y: 5)
-                    .shadow(color: color == .dark ? Color.darkEnd : Color.whiteEnd, radius: 5, x: -5, y: -5)
-                
+                    .stroke(color == .dark ? Color.black : Color.gray, lineWidth: 4)
+                    .blur(radius: 4)
+                    .offset(x: 2, y: 2)
+                    .mask(Rectangle()
+                            .fill(LinearGradient(Color.black, Color.clear))
+                            .cornerRadius(20)
+                    )
             } else {
-                shape
-                    .fill(color == .dark ? LinearGradient(Color.darkStart, Color.darkEnd) : LinearGradient(Color.whiteStart, Color.whiteEnd))
-                    .shadow(color: color == .dark ? Color.darkStart : Color.whiteStart, radius: 5, x: -5, y: -5)
-                    .shadow(color: color == .dark ? Color.darkEnd : Color.whiteEnd, radius: 5, x: 5, y: 5)
+                if color == .dark {
+                    shape
+                        .fill(Color.darkEnd)
+                        .shadow(color: Color.black, radius: 5, x: -5, y: -5)
+                } else {
+                    shape
+                        .fill(Color.whiteStart)
+                        .shadow(color: Color.white, radius: 5, x: -5, y: -5)
+                        .shadow(color: Color.white, radius: 5, x: 5, y: 5)
+                }
             }
         }
         .animation(nil)

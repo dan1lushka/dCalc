@@ -21,19 +21,26 @@ struct HomeView: View {
         GeometryReader { geometry in
             ZStack {
                 
-                colorScheme == .light ? LinearGradient(.whiteStart, .whiteEnd) : LinearGradient(.darkStart, .darkEnd)
+                colorScheme == .light ? Color.whiteStart : Color.darkEnd
                 
                 VStack {
                     ViewHeader(width: geometry.size.width * 0.95, text: "Home")
 
                     HomeViewCalculationPanel(dosage: $dosage, colorScheme: colorScheme)
+                    
                     Spacer()
                         .frame(height: geometry.size.height * 0.1)
-                    HomeViewSliderPanel(currentSugarLevel: $currentSugarLevel, targetSugarLevel: $targetSugarLevel, carbsPerUnitOfInsuline: $carbsPerUnitOfInsuline, colorScheme: colorScheme)
+                    
+                    HomeViewSliderPanel(currentSugarLevel: $currentSugarLevel, targetSugarLevel: $targetSugarLevel, carbsPerUnitOfInsulin: $carbsPerUnitOfInsuline, colorScheme: colorScheme)
+                    
                     Spacer()
+                    
                     HomeViewExtraButtons(showButtons: $showButtons, colorScheme: colorScheme)
+                    
                     Spacer()
+                    
                     HomeViewAddButton(showButtons: $showButtons, colorScheme: colorScheme)
+                    
                     Spacer()
                         .frame(height: geometry.size.height * 0.025)
                 }
