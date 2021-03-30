@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeViewSlider: View {
+struct HomeViewSliderPanel: View {
     
     @Binding var currentSugarLevel: Double
     @Binding var targetSugarLevel: Double
@@ -32,6 +32,6 @@ struct HomeViewSlider: View {
 
 struct HomeViewSlider_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewSlider(currentSugarLevel: .constant(5.5), targetSugarLevel: .constant(5.5), carbsPerUnitOfInsuline: .constant(5.0), colorScheme: .light)
+        HomeViewSliderPanel(currentSugarLevel: .constant(5.5), targetSugarLevel: .constant(5.5), carbsPerUnitOfInsuline: .constant(5.0), colorScheme: .light)
     }
 }
