@@ -19,6 +19,7 @@ struct HomeViewAddButton: View {
                 .font(.system(size: 35, weight: .regular))
                 .foregroundColor(.cornBlue)
         }
+        .contentShape(Circle())
         .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme == .light ? .light : .dark))
         .simultaneousGesture(LongPressGesture(minimumDuration: 0.3)
                                 .onEnded { _ in

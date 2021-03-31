@@ -20,14 +20,13 @@ struct HomeViewCalculationLabel: View {
             .foregroundColor(.cornBlue)
             .frame(width: 200)
             .background(
-                NeumorphicBackground(color: colorScheme, isHighlighted: true, shape: Rectangle())
+                NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle())
             )
-
     }
 }
 
 struct HomeViewCalculationLabel_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewCalculationLabel(dosage: .constant(2), colorScheme: .light)
+        HomeViewCalculationLabel(dosage: .constant(2), colorScheme: .dark)
     }
 }

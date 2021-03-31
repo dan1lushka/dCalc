@@ -23,7 +23,7 @@ struct HomeViewSliderPanel: View {
             NeumorphicSlider(color: colorScheme, range: 1.0...30.0, label: "Carbs / Unit", step: 1, unitsOfMeasure: "g", sliderValue: $carbsPerUnitOfInsulin)
         }
         .background(
-            NeumorphicBackground(color: colorScheme, isHighlighted: true, shape: Rectangle())
+            NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle())
         )
         .padding(.horizontal, 10)
         

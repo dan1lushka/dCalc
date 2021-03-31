@@ -19,7 +19,7 @@ struct HomeViewCalculationPanel: View {
                 HomeViewCalculateButton(colorScheme: colorScheme)
                 
                 Spacer()
-                
+                HomeViewCalculationLabel(dosage: $dosage, colorScheme: colorScheme)
                
             }
             .padding(.horizontal, 10)

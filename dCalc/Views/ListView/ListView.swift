@@ -53,13 +53,31 @@ struct RowContent: View {
     var body: some View {
         GeometryReader { geo in
             HStack (spacing: 0) {
-                Text(text)
-                    .animation(nil)
-                    .foregroundColor(.cornBlue)
-                    .font(.system(size: 15, weight: .bold))
-                    .padding()
-                    .frame(width: geo.size.width, alignment: .leading)
+                HStack {
+                    Image(systemName: "circle")
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .background(Color.blue)
+                        .padding(3)
+                        .cornerRadius(20)
                     
+                    Spacer()
+                    
+                    VStack {
+                        Text("item name")
+                            .animation(nil)
+                            .foregroundColor(.cornBlue)
+                            .font(.system(size: 15, weight: .bold))
+                            .padding()
+                        
+                        Text("carbs 10g")
+                            .animation(nil)
+                            .foregroundColor(.cornBlue)
+                            .font(.system(size: 15, weight: .bold))
+                            .padding()
+                    }
+                    
+                }
+                .frame(width: geo.size.width, alignment: .leading)
                 
                 Image(systemName: "trash")
                     .font(.system(size: 20))
