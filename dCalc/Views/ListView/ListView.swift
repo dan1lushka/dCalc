@@ -55,6 +55,8 @@ struct RowContent: View {
             HStack (spacing: 0) {
                 HStack {
                     Image(systemName: "circle")
+                        .resizable()
+                        .scaledToFit()
                         .frame(width: 100, height: 100, alignment: .center)
                         .background(Color.blue)
                         .padding(3)
