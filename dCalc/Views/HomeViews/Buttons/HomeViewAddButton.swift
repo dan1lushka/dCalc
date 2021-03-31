@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeViewAddButton: View {
     
     @Binding var showButtons: Bool
+    @Binding var showPopover: Bool
     
     var colorScheme: ColorScheme
     
@@ -32,6 +33,12 @@ struct HomeViewAddButton: View {
                                 })
         .simultaneousGesture(TapGesture()
                                 .onEnded {
+                                    
+                                    withAnimation {
+                                        showPopover.toggle()
+                                    }
+                                    
+                                    
                                     print("tap Action!")
                                 })
     }
@@ -39,6 +46,6 @@ struct HomeViewAddButton: View {
 
 struct HomeViewAddButton_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewAddButton(showButtons: .constant(true), colorScheme: .light)
+        HomeViewAddButton(showButtons: .constant(true), showPopover: .constant(false), colorScheme: .light)
     }
 }

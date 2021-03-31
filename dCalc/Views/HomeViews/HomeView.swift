@@ -16,6 +16,10 @@ struct HomeView: View {
     @State private var carbsPerUnitOfInsuline: Double = 10.0
     @State private var showButtons = false
     @State private var dosage = 2
+    @State private var showManualAddPopover = false
+    @State private var productName = ""
+    @State private var grammsConsumed = ""
+    @State private var grammsPer100g = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -25,7 +29,7 @@ struct HomeView: View {
                 
                 VStack {
                     ViewHeader(width: geometry.size.width * 0.95, text: "Home")
-
+                    
                     HomeViewCalculationPanel(dosage: $dosage, colorScheme: colorScheme)
                     
                     Spacer()
@@ -39,11 +43,14 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    HomeViewAddButton(showButtons: $showButtons, colorScheme: colorScheme)
+                    HomeViewAddButton(showButtons: $showButtons, showPopover: $showManualAddPopover, colorScheme: colorScheme)
                     
                     Spacer()
                         .frame(height: geometry.size.height * 0.025)
                 }
+                
+                HomeViewAddPopUp(colorScheme: colorScheme, productName: $productName, grammsConsumed: $grammsConsumed, grammsPer100g: $grammsPer100g, showPopup: $showManualAddPopover)
+                    .show(isVisible: $showManualAddPopover)
             }
         }
         .edgesIgnoringSafeArea(.all)
