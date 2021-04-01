@@ -11,6 +11,8 @@ struct HomeViewAddButton: View {
     
     @Binding var showButtons: Bool
     @Binding var showPopover: Bool
+    @Binding var showHomeView: Bool
+    @Binding var showTabBar: Bool
     
     var colorScheme: ColorScheme
     
@@ -38,6 +40,8 @@ struct HomeViewAddButton: View {
                                         showPopover.toggle()
                                     }
                                     
+                                    showHomeView = false
+                                    showTabBar = false
                                     
                                     print("tap Action!")
                                 })
@@ -46,6 +50,6 @@ struct HomeViewAddButton: View {
 
 struct HomeViewAddButton_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewAddButton(showButtons: .constant(true), showPopover: .constant(false), colorScheme: .light)
+        HomeViewAddButton(showButtons: .constant(true), showPopover: .constant(false), showHomeView: .constant(false), showTabBar: .constant(false), colorScheme: .light)
     }
 }

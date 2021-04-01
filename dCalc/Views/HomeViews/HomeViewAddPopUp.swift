@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomeViewAddPopUp: View {
     
@@ -16,64 +17,89 @@ struct HomeViewAddPopUp: View {
     @Binding var grammsPer100g: String
     
     @Binding var showPopup: Bool
+    @Binding var showHomeView: Bool
+    @Binding var showTabBar: Bool
+    
+    @State private var isLookUpError = false
     
     var body: some View {
         GeometryReader { geo in
-            VStack {
+            ScrollView {
                 
                 Spacer()
                 
+                Text("Error: ")
+                    .frame(height: 45)
+                    .lineLimit(2)
+                    .padding()
+                    .foregroundColor(.red)
+                    .show(isVisible: $isLookUpError)
+                
                 HStack {
-                    Text("Product Name")
-                        .padding()
-                        .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
-                        
+                    Text("Product Name:")
+                    
                     TextField("Type here", text: $productName)
-                        .padding()
-                        .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
+                        .contentShape(Rectangle())
+                        .padding(15)
+                        .background(colorScheme == .dark ? Color.darkStart : Color.whiteEnd)
+                        .cornerRadius(15)
                         .keyboardType(.alphabet)
-                        
+                        .contentShape(Rectangle())
+                    
                 }
                 .padding()
                 
+                Divider()
+                
                 HStack {
-                    Text("Gramms consumed")
-                        .padding()
-                        .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
-                        .layoutPriority(1)
+                    Text("Gramms consumed:")
+                    
+                    Spacer()
                     TextField("Type here", text: $grammsConsumed)
+                        .contentShape(Rectangle())
                         .keyboardType(.numberPad)
-                        .padding()
-                        .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
-                        .layoutPriority(0)
+                        .padding(15)
+                        .background(colorScheme == .dark ? Color.darkStart : Color.whiteEnd)
+                        .cornerRadius(15)
+                        .contentShape(Rectangle())
+                    
                 }
                 .padding()
                 
+                Divider()
+                
                 HStack {
-                    Text("Carbs(g) per 100g")
-                        .padding()
-                        .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
-                        .layoutPriority(1)
+                    Text("Carbs(g) per 100g:")
                     
                     TextField("Type here", text: $grammsPer100g)
+                        .contentShape(Rectangle())
                         .keyboardType(.numberPad)
-                        .padding()
-                        .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
-                        .layoutPriority(0)
+                        .padding(15)
+                        .background(colorScheme == .dark ? Color.darkStart : Color.whiteEnd)
+                        .cornerRadius(15)
+                    
                     
                     Button(action: {}, label: {
                         Image(systemName: "magnifyingglass")
                     })
                     .buttonStyle(NeumorphicButtonStyle(paddingSize: 10, color: colorScheme))
                     .padding(.bottom, 10)
+                    .offset(x: 0, y: 5)
                 }
                 .padding()
                 
-                Spacer()
+                Divider()
                 
-                HStack(spacing: geo.size.width / 3) {
-                    
-                    Button(action: {}, label: {
+                HStack(spacing: geo.size.width / 2.5) {
+                    Button(action: {
+                        withAnimation(.spring()) {
+                            isLookUpError = true
+                        }
+                        
+                        //if success then do this
+                        showHomeView = true
+                        showTabBar = true
+                    }, label: {
                         Text("Save")
                     })
                     .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme))
@@ -81,26 +107,33 @@ struct HomeViewAddPopUp: View {
                     
                     Button(action: {
                         showPopup.toggle()
+                        showHomeView = true
+                        showTabBar = true
                     }, label: {
                         Text("Cancel")
                     })
                     .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme))
                     .padding(.bottom, 10)
                 }
+                .padding(.top, geo.size.height * 0.1)
             }
             .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
-            .frame(width: geo.size.width * 0.95, height: geo.size.height * 0.6, alignment: .center)
-            .offset(x: 10, y: geo.size.height * 0.15)
-            .font(.system(size: 15, weight: .bold))
+            .cornerRadius(20)
+            .frame(width: geo.size.width * 0.95, height: geo.size.height * 0.71, alignment: .center)
+            .offset(x: 10, y: geo.size.height * 0.14)
+            .font(.system(size: 12, weight: .bold))
             .foregroundColor(.cornBlue)
             .multilineTextAlignment(.center)
+            
         }
-        
+        .adaptsToKeyboard()
     }
 }
 
 struct HomeViewAddPopUp_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewAddPopUp(colorScheme: .light, productName: .constant("Bananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"), grammsConsumed: .constant("50"), grammsPer100g: .constant("15"), showPopup: .constant(true))
+        HomeViewAddPopUp(colorScheme: .light, productName: .constant("Bananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"), grammsConsumed: .constant("50"), grammsPer100g: .constant("15"), showPopup: .constant(true), showHomeView: .constant(false), showTabBar: .constant(false))
     }
 }
+
+

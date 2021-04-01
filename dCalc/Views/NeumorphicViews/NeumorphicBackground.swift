@@ -30,11 +30,9 @@ struct NeumorphicBackground<S: Shape>: View {
                                 .stroke(Color.darkEnd, lineWidth: 8)
                                 .blur(radius: 4)
                                 .offset(x: -2, y: -2)
-                                .mask(shape
-                                        .fill(LinearGradient(Color.whiteStart, Color.whiteEnd)
-                                        )
-                                )
+                                .mask(shape.fill(LinearGradient(Color.whiteStart, Color.whiteEnd)))
                         )
+                        
                 } else {
                     shape
                         .fill(Color.whiteStart)
@@ -49,23 +47,19 @@ struct NeumorphicBackground<S: Shape>: View {
                                 .stroke(Color.whiteEnd, lineWidth: 8)
                                 .blur(radius: 4)
                                 .offset(x: -2, y: -2)
-                                .mask(shape
-                                        .fill(LinearGradient(Color.darkStart, Color.darkEnd)
-                                        )
-                                )
+                                .mask(shape.fill(LinearGradient(Color.darkStart, Color.darkEnd)))
                         )
+                        
                 }
             } else {
                 if color == .dark {
                     shape
                         .fill(LinearGradient(Color.darkStart, Color.darkEnd))
-                        .overlay(shape.stroke(Color.cornBlue, lineWidth: 4))
                         .shadow(color: Color.darkStart, radius: 5, x: -3, y: -3)
                         .shadow(color: Color.darkEnd, radius: 5, x: 3, y: 3)
                 } else {
                     shape
                         .fill(LinearGradient(Color.white, Color.whiteEnd))
-                        .overlay(shape.stroke(Color.cornBlue, lineWidth: 4))
                         .shadow(color: Color.whiteEnd, radius: 5, x: -3, y: -3)
                         .shadow(color: Color.whiteStart, radius: 5, x: 3, y: 3)
                 }
@@ -77,6 +71,7 @@ struct NeumorphicBackground<S: Shape>: View {
 
 struct NeumorphicBackground_Previews: PreviewProvider {
     static var previews: some View {
-        NeumorphicBackground(color: ColorScheme.light, isHighlighted: false, shape: Circle())
+        NeumorphicBackground(color: ColorScheme.light, isHighlighted: false, shape: Rectangle())
+            .frame(width: 100, height: 100, alignment: .center)
     }
 }

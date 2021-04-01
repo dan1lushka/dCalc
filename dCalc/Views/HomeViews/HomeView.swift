@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
-    
     var colorScheme: ColorScheme
+    
+    @Binding var showHomeView: Bool
+    @Binding var showTabBar: Bool
     
     @State private var currentSugarLevel: Double = 5.5
     @State private var targetSugarLevel: Double = 5.5
@@ -23,6 +25,7 @@ struct HomeView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            
             ZStack {
                 
                 colorScheme == .light ? Color.whiteStart : Color.darkEnd
@@ -43,13 +46,14 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    HomeViewAddButton(showButtons: $showButtons, showPopover: $showManualAddPopover, colorScheme: colorScheme)
+                    HomeViewAddButton(showButtons: $showButtons, showPopover: $showManualAddPopover, showHomeView: $showHomeView, showTabBar: $showTabBar, colorScheme: colorScheme)
                     
                     Spacer()
                         .frame(height: geometry.size.height * 0.025)
                 }
+                .show(isVisible: $showHomeView)
                 
-                HomeViewAddPopUp(colorScheme: colorScheme, productName: $productName, grammsConsumed: $grammsConsumed, grammsPer100g: $grammsPer100g, showPopup: $showManualAddPopover)
+                HomeViewAddPopUp(colorScheme: colorScheme, productName: $productName, grammsConsumed: $grammsConsumed, grammsPer100g: $grammsPer100g, showPopup: $showManualAddPopover, showHomeView: $showHomeView, showTabBar: $showTabBar)
                     .show(isVisible: $showManualAddPopover)
             }
         }
@@ -62,6 +66,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(colorScheme: .light)
+        HomeView(colorScheme: .light, showHomeView: .constant(false), showTabBar: .constant(true))
     }
 }

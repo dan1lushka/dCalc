@@ -19,9 +19,8 @@ struct HomeViewCalculationLabel: View {
             .font(.system(size: 15, weight: .bold))
             .foregroundColor(.cornBlue)
             .frame(width: 200)
-            .background(
-                NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle())
-            )
+            .background(colorScheme == .dark ? Color.darkStart : Color.whiteEnd)
+            .cornerRadius(15)
     }
 }
 

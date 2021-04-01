@@ -11,13 +11,15 @@ struct MainView: View {
     
     @Binding var selectedIndex: Int
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @State private var showHomeView = true
+    @State private var showTabBar = true
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 switch selectedIndex {
                 case 0:
-                    HomeView(colorScheme: colorScheme)
+                    HomeView(colorScheme: colorScheme, showHomeView: $showHomeView, showTabBar: $showTabBar)
                 default:
                     ListView(colorScheme: colorScheme)
                 }
@@ -26,6 +28,7 @@ struct MainView: View {
                     Spacer()
                     CustomTabBar(selectedIndex: $selectedIndex, spacing: geometry.size.width * 0.6)
                 }
+                .show(isVisible: $showTabBar)
             }
         }
     }
