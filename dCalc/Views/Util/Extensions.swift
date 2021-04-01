@@ -26,3 +26,10 @@ extension View {
         ModifiedContent(content: self, modifier: Show(isVisible: isVisible))
     }
 }
+
+extension View {
+    func adaptsToKeyboard() -> some View {
+        return modifier(AdaptsToKeyboard())
+    }
+}
+
