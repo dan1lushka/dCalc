@@ -9,13 +9,10 @@ import SwiftUI
 
 struct HomeViewAddButton: View {
     
-    @Binding var showButtons: Bool
-    @Binding var showPopover: Bool
-    @Binding var showHomeView: Bool
-    @Binding var showTabBar: Bool
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
-    var colorScheme: ColorScheme
-    
+    @ObservedObject var viewTransitionManager: ViewTransitionManager
+
     var body: some View {
         Button(action: {}) {
             Image(systemName: "plus")
@@ -30,19 +27,16 @@ struct HomeViewAddButton: View {
                                     let impact = UIImpactFeedbackGenerator(style: .heavy)
                                     impact.impactOccurred()
                                     
-                                    showButtons = true
+                                    viewTransitionManager.showExtraButtons = true
                                     
                                     print("long press Action!")
                                 })
         .simultaneousGesture(TapGesture()
                                 .onEnded {
                                     
-                                    withAnimation {
-                                        showPopover.toggle()
-                                    }
-                                    
-                                    showHomeView = false
-                                    showTabBar = false
+                                    viewTransitionManager.showPopup = true
+                                    viewTransitionManager.showHomeView = false
+                                    viewTransitionManager.showTabBar = false
                                     
                                     print("tap Action!")
                                 })
@@ -51,6 +45,6 @@ struct HomeViewAddButton: View {
 
 struct HomeViewAddButton_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewAddButton(showButtons: .constant(true), showPopover: .constant(false), showHomeView: .constant(false), showTabBar: .constant(false), colorScheme: .light)
+        HomeViewAddButton(viewTransitionManager: ViewTransitionManager())
     }
 }

@@ -9,28 +9,30 @@ import SwiftUI
 
 struct MainView: View {
     
-    @Binding var selectedIndex: Int
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @State private var showHomeView = true
-    @State private var showTabBar = true
+    
+    @ObservedObject var calculationManager: CalculationManager
+    @ObservedObject var viewTransitionManager: ViewTransitionManager
     
     var body: some View {
         
         GeometryReader { geometry in
             
             ZStack {
-                switch selectedIndex {
-                case 0:
-                    HomeView(colorScheme: colorScheme, showHomeView: $showHomeView, showTabBar: $showTabBar)
-                default:
-                    ListView(colorScheme: colorScheme)
+                switch viewTransitionManager.currentView {
+                case .home:
+                    HomeView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
+                case .list:
+                    ListView(calculationManager: calculationManager, colorScheme: colorScheme)
+                case .popup:
+                    PopupView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
                 }
                 
                 VStack {
                     Spacer()
-                    CustomTabBar(selectedIndex: $selectedIndex, spacing: geometry.size.width * 0.6)
+                    CustomTabBar(viewTransitionManager: viewTransitionManager, spacing: geometry.size.width * 0.6)
                 }
-                .show(isVisible: $showTabBar)
+                .show(isVisible: $viewTransitionManager.showTabBar)
             }
         }
     }
@@ -39,10 +41,8 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MainView(selectedIndex: .constant(0))
-            MainView(selectedIndex: .constant(1))
+            MainView(calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager())
         }
-        
     }
 }
 

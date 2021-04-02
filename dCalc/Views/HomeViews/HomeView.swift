@@ -8,20 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    var colorScheme: ColorScheme
     
-    @Binding var showHomeView: Bool
-    @Binding var showTabBar: Bool
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
-    @State private var currentSugarLevel: Double = 5.5
-    @State private var targetSugarLevel: Double = 5.5
-    @State private var carbsPerUnitOfInsuline: Double = 10.0
-    @State private var showButtons = false
-    @State private var dosage = 2
-    @State private var showManualAddPopover = false
-    @State private var productName = ""
-    @State private var grammsConsumed = ""
-    @State private var grammsPer100g = ""
+    @ObservedObject var calculationManager: CalculationManager
+    @ObservedObject var viewTransitionManager: ViewTransitionManager
     
     var body: some View {
         GeometryReader { geometry in
@@ -33,39 +24,39 @@ struct HomeView: View {
                 VStack {
                     ViewHeader(width: geometry.size.width * 0.95, text: "Home")
                     
-                    HomeViewCalculationPanel(dosage: $dosage, colorScheme: colorScheme)
+                    HomeViewCalculationPanel(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
                     
                     Spacer()
                         .frame(height: geometry.size.height * 0.1)
                     
-                    HomeViewSliderPanel(currentSugarLevel: $currentSugarLevel, targetSugarLevel: $targetSugarLevel, carbsPerUnitOfInsulin: $carbsPerUnitOfInsuline, colorScheme: colorScheme)
+                    HomeViewSliderPanel(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
                     
                     Spacer()
                     
-                    HomeViewExtraButtons(showButtons: $showButtons, colorScheme: colorScheme)
+                    HomeViewExtraButtons(viewTransitionManager: viewTransitionManager)
                     
                     Spacer()
                     
-                    HomeViewAddButton(showButtons: $showButtons, showPopover: $showManualAddPopover, showHomeView: $showHomeView, showTabBar: $showTabBar, colorScheme: colorScheme)
+                    HomeViewAddButton(viewTransitionManager: viewTransitionManager)
                     
                     Spacer()
                         .frame(height: geometry.size.height * 0.025)
                 }
-                .show(isVisible: $showHomeView)
+                .show(isVisible: $viewTransitionManager.showHomeView)
                 
-                PopupView(colorScheme: colorScheme, productName: $productName, grammsConsumed: $grammsConsumed, grammsPer100g: $grammsPer100g, showPopup: $showManualAddPopover, showHomeView: $showHomeView, showTabBar: $showTabBar)
-                    .show(isVisible: $showManualAddPopover)
-            }
+              PopupView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
+                .show(isVisible: $viewTransitionManager.showPopup)
+         }
         }
         .edgesIgnoringSafeArea(.all)
         .onTapGesture {
-            showButtons = false
+            viewTransitionManager.showExtraButtons = false
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(colorScheme: .light, showHomeView: .constant(false), showTabBar: .constant(true))
+        HomeView(calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager())
     }
 }

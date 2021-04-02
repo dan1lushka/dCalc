@@ -9,9 +9,10 @@ import SwiftUI
 
 struct HomeViewExtraButtons: View {
     
-    @Binding var showButtons: Bool
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
-    var colorScheme: ColorScheme
+    @ObservedObject var viewTransitionManager: ViewTransitionManager
+    
     let buttonImages = ["highlighter", "barcode", "camera"]
     
     var body: some View {
@@ -27,7 +28,7 @@ struct HomeViewExtraButtons: View {
                     }
                     .buttonStyle(NeumorphicButtonStyle(paddingSize: 15, color: (colorScheme == .light ? .light : .dark)))
                     .padding()
-                    .show(isVisible: $showButtons)
+                    .show(isVisible: $viewTransitionManager.showExtraButtons)
                 }
             }
         }
@@ -36,6 +37,6 @@ struct HomeViewExtraButtons: View {
 
 struct HomeViewExtraButtons_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewExtraButtons(showButtons: .constant(true), colorScheme: .light)
+        HomeViewExtraButtons(viewTransitionManager: ViewTransitionManager())
     }
 }

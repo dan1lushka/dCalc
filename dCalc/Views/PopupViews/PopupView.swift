@@ -9,16 +9,11 @@ import SwiftUI
 
 struct PopupView: View {
     
-    var colorScheme: ColorScheme
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
-    @Binding var productName: String
-    @Binding var grammsConsumed: String
-    @Binding var grammsPer100g: String
-    
-    @Binding var showPopup: Bool
-    @Binding var showHomeView: Bool
-    @Binding var showTabBar: Bool
-    
+    @ObservedObject var calculationManager: CalculationManager
+    @ObservedObject var viewTransitionManager: ViewTransitionManager
+
     @State private var isLookUpError = false
     
     var body: some View {
@@ -34,7 +29,7 @@ struct PopupView: View {
                     errorText
                 }
                 
-                PopupViewBody(colorScheme: colorScheme, productName: $productName, grammsConsumed: $grammsConsumed, grammsPer100g: $grammsPer100g)
+                PopupViewBody(colorScheme: colorScheme, calculationManager: calculationManager)
                 
                 popupClearRectangle(size: geo.size.height * 0.15)
                 
@@ -77,11 +72,11 @@ struct PopupView: View {
             if label == "Save" {
                 isLookUpError = true
             } else {
-                showPopup = false
+                viewTransitionManager.showPopup = false
             }
             
-            showHomeView = true
-            showTabBar = true
+            viewTransitionManager.showHomeView = true
+            viewTransitionManager.showTabBar = true
         }, label: {
             Text(label)
         })
@@ -92,6 +87,6 @@ struct PopupView: View {
 
 struct HomeViewAddPopUp_Previews: PreviewProvider {
     static var previews: some View {
-        PopupView(colorScheme: .light, productName: .constant("Bananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"), grammsConsumed: .constant("50"), grammsPer100g: .constant("15"), showPopup: .constant(true), showHomeView: .constant(false), showTabBar: .constant(false))
+        PopupView(calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager())
     }
 }

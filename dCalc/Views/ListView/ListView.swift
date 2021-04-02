@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ListView: View {
-    @State var array = ["First Text", "Second Text", "Third Text"]
+    
+    @ObservedObject var calculationManager: CalculationManager
+
     @State var indices: [Int] = []
     
     var colorScheme: ColorScheme
@@ -24,9 +26,9 @@ struct ListView: View {
                     
                     ScrollView {
                         LazyVStack(spacing: 2) {
-                            ForEach (0..<array.count, id: \.self) { index in
+                            ForEach (0..<calculationManager.products.items.count, id: \.self) { index in
                                 if !indices.contains(index) {
-                                    RowContent(colorScheme: colorScheme, text: array[index], index: index, indices : $indices)
+                                    RowContent(colorScheme: colorScheme, item: calculationManager.products.items[index], index: index, indices : $indices)
                                         .frame(height: 100)
                                 }
                             }
@@ -42,13 +44,15 @@ struct ListView: View {
 struct RowContent: View {
     
     var colorScheme: ColorScheme
-    let text: String
+    let item: Products.Item
     let index: Int
     let width: CGFloat = 60
     
     @Binding var indices: [Int]
     @State var offset = CGSize.zero
     @State var scale: CGFloat = 0.5
+    
+    //TODO: stop row from swiping from left to right
     
     var body: some View {
         GeometryReader { geo in
@@ -65,13 +69,13 @@ struct RowContent: View {
                     Spacer()
                     
                     VStack {
-                        Text("item name")
+                        Text(String(item.productName ?? ""))
                             .animation(nil)
                             .foregroundColor(.cornBlue)
                             .font(.system(size: 15, weight: .bold))
                             .padding()
                         
-                        Text("carbs 10g")
+                        Text(String(item.grammsConsumed ?? ""))
                             .animation(nil)
                             .foregroundColor(.cornBlue)
                             .font(.system(size: 15, weight: .bold))
@@ -118,7 +122,7 @@ struct RowContent: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(array: ["First Text", "Second Text", "Third Text"], indices: [3], colorScheme: .dark)
+        ListView(calculationManager: CalculationManager(), colorScheme: .light)
     }
 }
 

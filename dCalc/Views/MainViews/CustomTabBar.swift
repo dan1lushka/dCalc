@@ -11,7 +11,7 @@ struct CustomTabBar: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
-    @Binding var selectedIndex: Int
+    @ObservedObject var viewTransitionManager: ViewTransitionManager
     
     let tabBarImages = ["house", "list.dash"]
     var spacing: CGFloat
@@ -20,11 +20,11 @@ struct CustomTabBar: View {
         HStack(spacing: spacing) {
             ForEach(0 ..< 2) { num in
                 Button(action: {
-                    selectedIndex = num
+                    viewTransitionManager.currentView = ViewTransitionManager.ViewState(rawValue: num)!
                 }) {
                     Image(systemName: tabBarImages[num])
                         .font(.system(size: 24, weight: .bold))
-                        .foregroundColor(selectedIndex == num ?
+                        .foregroundColor(viewTransitionManager.currentView.rawValue == num ?
                                             (colorScheme == .light ? .black: .white) :
                                             .cornBlue)
                 }
@@ -39,12 +39,12 @@ struct CustomTabBar_Previews: PreviewProvider {
         Group {
             VStack {
                 Spacer()
-                CustomTabBar(selectedIndex: .constant(1), spacing: 100)
+                CustomTabBar(viewTransitionManager: ViewTransitionManager(), spacing: 100)
             }
             
             VStack {
                 Spacer()
-                CustomTabBar(selectedIndex: .constant(0), spacing: 100)
+                CustomTabBar(viewTransitionManager: ViewTransitionManager(), spacing: 100)
             }
         }
     }

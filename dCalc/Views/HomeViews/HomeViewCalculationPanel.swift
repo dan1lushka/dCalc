@@ -9,9 +9,10 @@ import SwiftUI
 
 struct HomeViewCalculationPanel: View {
     
-    @Binding var dosage: Int
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
-    var colorScheme: ColorScheme
+    @ObservedObject var calculationManager: CalculationManager
+    @ObservedObject var viewTransitionManager: ViewTransitionManager
     
     var body: some View {
 
@@ -19,7 +20,7 @@ struct HomeViewCalculationPanel: View {
                 HomeViewCalculateButton(colorScheme: colorScheme)
                 
                 Spacer()
-                HomeViewCalculationLabel(dosage: $dosage, colorScheme: colorScheme)
+                HomeViewCalculationLabel(dosage: $calculationManager.dosage, colorScheme: colorScheme)
                
             }
             .padding(.horizontal, 10)
@@ -29,8 +30,7 @@ struct HomeViewCalculationPanel: View {
 struct HomeViewCalculationTab_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HomeViewCalculationPanel(dosage: .constant(2), colorScheme: .light)
-            HomeViewCalculationPanel(dosage: .constant(2), colorScheme: .dark)
+            HomeViewCalculationPanel(calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager())
         }
     }
 }

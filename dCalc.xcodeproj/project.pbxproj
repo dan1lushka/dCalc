@@ -24,6 +24,11 @@
 		C8C9D2262609A3DB00A595F1 /* HomeViewCalculationPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C9D2252609A3DB00A595F1 /* HomeViewCalculationPanel.swift */; };
 		C8C9D2292609A43800A595F1 /* HomeViewCalculateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C9D2282609A43800A595F1 /* HomeViewCalculateButton.swift */; };
 		C8D6CD5E26172247005BD734 /* PopupViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6CD5D26172247005BD734 /* PopupViewBody.swift */; };
+		C8D6CD65261723E8005BD734 /* CalculationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6CD64261723E8005BD734 /* CalculationManager.swift */; };
+		C8D6CD6826172400005BD734 /* ViewTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6CD6726172400005BD734 /* ViewTransitionManager.swift */; };
+		C8D6CD6C26172439005BD734 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6CD6B26172439005BD734 /* Products.swift */; };
+		C8D6CD6F26172454005BD734 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6CD6E26172454005BD734 /* UserDetails.swift */; };
+		C8D6CD722617247A005BD734 /* ListViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6CD712617247A005BD734 /* ListViewManager.swift */; };
 		C8E3D16C2606337A0001479F /* NeumorphicBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E3D16B2606337A0001479F /* NeumorphicBackground.swift */; };
 		C8F0570E2604ED82002A8C39 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0570D2604ED82002A8C39 /* CustomTabBar.swift */; };
 		C8F0571126050571002A8C39 /* NeumorphicSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0571026050571002A8C39 /* NeumorphicSlider.swift */; };
@@ -51,6 +56,11 @@
 		C8C9D2252609A3DB00A595F1 /* HomeViewCalculationPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCalculationPanel.swift; sourceTree = "<group>"; };
 		C8C9D2282609A43800A595F1 /* HomeViewCalculateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCalculateButton.swift; sourceTree = "<group>"; };
 		C8D6CD5D26172247005BD734 /* PopupViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewBody.swift; sourceTree = "<group>"; };
+		C8D6CD64261723E8005BD734 /* CalculationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationManager.swift; sourceTree = "<group>"; };
+		C8D6CD6726172400005BD734 /* ViewTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionManager.swift; sourceTree = "<group>"; };
+		C8D6CD6B26172439005BD734 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		C8D6CD6E26172454005BD734 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		C8D6CD712617247A005BD734 /* ListViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewManager.swift; sourceTree = "<group>"; };
 		C8E3D16B2606337A0001479F /* NeumorphicBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicBackground.swift; sourceTree = "<group>"; };
 		C8F0570D2604ED82002A8C39 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		C8F0571026050571002A8C39 /* NeumorphicSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicSlider.swift; sourceTree = "<group>"; };
@@ -88,6 +98,8 @@
 		C8A93ABD2604143B00912C35 /* dCalc */ = {
 			isa = PBXGroup;
 			children = (
+				C8D6CD6A2617241D005BD734 /* Models */,
+				C8D6CD63261723D8005BD734 /* ViewModels */,
 				C8A93ACE260416E900912C35 /* Views */,
 				C8A93ABE2604143B00912C35 /* dCalcApp.swift */,
 				C8A93AC22604143C00912C35 /* Assets.xcassets */,
@@ -165,6 +177,25 @@
 				C86B374E2614195A008607C0 /* PopupView.swift */,
 			);
 			path = PopupViews;
+			sourceTree = "<group>";
+		};
+		C8D6CD63261723D8005BD734 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C8D6CD64261723E8005BD734 /* CalculationManager.swift */,
+				C8D6CD6726172400005BD734 /* ViewTransitionManager.swift */,
+				C8D6CD712617247A005BD734 /* ListViewManager.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C8D6CD6A2617241D005BD734 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C8D6CD6B26172439005BD734 /* Products.swift */,
+				C8D6CD6E26172454005BD734 /* UserDetails.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C8E3D1712606341E0001479F /* NeumorphicViews */ = {
@@ -256,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8D6CD65261723E8005BD734 /* CalculationManager.swift in Sources */,
 				C8A93AD42604177500912C35 /* ListView.swift in Sources */,
 				C8E3D16C2606337A0001479F /* NeumorphicBackground.swift in Sources */,
 				C8F0571426058279002A8C39 /* ShowModifier.swift in Sources */,
@@ -266,15 +298,19 @@
 				C8A93AD12604176A00912C35 /* HomeView.swift in Sources */,
 				C81AA3902607A83400313402 /* HomeViewAddButton.swift in Sources */,
 				C8A93AC12604143B00912C35 /* MainView.swift in Sources */,
+				C8D6CD6C26172439005BD734 /* Products.swift in Sources */,
 				C81AA38D2607A7BF00313402 /* HomeViewSliderPanel.swift in Sources */,
 				C86B374F2614195A008607C0 /* PopupView.swift in Sources */,
 				C8F0571126050571002A8C39 /* NeumorphicSlider.swift in Sources */,
 				C81D8EB3261681A50014869C /* AdaptsToKeyboard.swift in Sources */,
 				C8C9D2292609A43800A595F1 /* HomeViewCalculateButton.swift in Sources */,
+				C8D6CD6F26172454005BD734 /* UserDetails.swift in Sources */,
 				C8C9D2262609A3DB00A595F1 /* HomeViewCalculationPanel.swift in Sources */,
 				C8F36DD1260B288600F8E4BE /* ViewHeader.swift in Sources */,
+				C8D6CD6826172400005BD734 /* ViewTransitionManager.swift in Sources */,
 				C8A93ABF2604143B00912C35 /* dCalcApp.swift in Sources */,
 				C86B374C2612E974008607C0 /* HomeViewCalculationLabel.swift in Sources */,
+				C8D6CD722617247A005BD734 /* ListViewManager.swift in Sources */,
 				C81AA3932607A86B00313402 /* HomeViewExtraButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

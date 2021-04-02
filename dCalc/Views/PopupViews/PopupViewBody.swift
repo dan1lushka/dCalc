@@ -11,9 +11,7 @@ struct PopupViewBody: View {
     
     var colorScheme: ColorScheme
     
-    @Binding var productName: String
-    @Binding var grammsConsumed: String
-    @Binding var grammsPer100g: String
+    @ObservedObject var calculationManager: CalculationManager
     
     var body: some View {
         VStack {
@@ -23,7 +21,7 @@ struct PopupViewBody: View {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
                     }
                 
-                popupTextfield(text: $productName, keyboard: .default)
+                popupTextfield(text: $calculationManager.productName, keyboard: .default)
             }
             .padding()
             
@@ -37,7 +35,7 @@ struct PopupViewBody: View {
                 
                 Spacer()
                 
-                popupTextfield(text: $grammsConsumed, keyboard: .numberPad)
+                popupTextfield(text: $calculationManager.grammsConsumed, keyboard: .numberPad)
             }
             .padding()
             
@@ -49,7 +47,7 @@ struct PopupViewBody: View {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
                     }
                 
-                popupTextfield(text: $grammsPer100g, keyboard: .numberPad)
+                popupTextfield(text: $calculationManager.grammsPer100g, keyboard: .numberPad)
                 lookupButton
             }
             .padding()
@@ -81,7 +79,7 @@ struct PopupViewBody: View {
 
 struct PopupViewBody_Previews: PreviewProvider {
     static var previews: some View {
-        PopupViewBody(colorScheme: .light, productName: .constant("banaannanana"), grammsConsumed: .constant("5.7"), grammsPer100g: .constant("7.2"))
+        PopupViewBody(colorScheme: .light, calculationManager: CalculationManager())
             .background(NeumorphicBackground(color: .light, isHighlighted: false, shape: Rectangle()))
             .font(.system(size: 12, weight: .bold))
             .foregroundColor(.cornBlue)
