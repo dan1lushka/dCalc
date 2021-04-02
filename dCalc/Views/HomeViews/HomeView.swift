@@ -53,7 +53,7 @@ struct HomeView: View {
                 }
                 .show(isVisible: $showHomeView)
                 
-                HomeViewAddPopUp(colorScheme: colorScheme, productName: $productName, grammsConsumed: $grammsConsumed, grammsPer100g: $grammsPer100g, showPopup: $showManualAddPopover, showHomeView: $showHomeView, showTabBar: $showTabBar)
+                PopupView(colorScheme: colorScheme, productName: $productName, grammsConsumed: $grammsConsumed, grammsPer100g: $grammsPer100g, showPopup: $showManualAddPopover, showHomeView: $showHomeView, showTabBar: $showTabBar)
                     .show(isVisible: $showManualAddPopover)
             }
         }
