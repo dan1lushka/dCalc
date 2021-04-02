@@ -10,11 +10,12 @@ import SwiftUI
 @main
 struct dCalcApp: App {
     
-    @State var viewIndex = 0
+    @StateObject var calculationManager = CalculationManager()
+    @StateObject var viewTransitionManager = ViewTransitionManager()
     
     var body: some Scene {
         WindowGroup {
-            MainView(selectedIndex: $viewIndex)
+            MainView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
         }
         
     }
