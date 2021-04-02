@@ -23,21 +23,36 @@ struct HomeViewAddPopUp: View {
     @State private var isLookUpError = false
     
     var body: some View {
+        
         GeometryReader { geo in
-            ScrollView {
+            
+            VStack {
                 
                 Spacer()
-                
-                Text("Error: ")
-                    .frame(height: 45)
-                    .lineLimit(2)
-                    .padding()
-                    .foregroundColor(.red)
-                    .show(isVisible: $isLookUpError)
-                
+                    
+                ZStack {
+                    Rectangle()
+                        .frame(height: geo.size.height * 0.2)
+                        .background(Color.clear)
+                        .foregroundColor(.clear)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                        }
+                    
+                    Text("Error: ")
+                        .frame(height: 45)
+                        .lineLimit(2)
+                        .padding()
+                        .foregroundColor(.red)
+                        .show(isVisible: $isLookUpError)
+                }
+                   
                 HStack {
                     Text("Product Name:")
-                    
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                        }
                     TextField("Type here", text: $productName)
                         .contentShape(Rectangle())
                         .padding(15)
@@ -53,8 +68,11 @@ struct HomeViewAddPopUp: View {
                 
                 HStack {
                     Text("Gramms consumed:")
-                    
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                        }
                     Spacer()
+                    
                     TextField("Type here", text: $grammsConsumed)
                         .contentShape(Rectangle())
                         .keyboardType(.numberPad)
@@ -70,14 +88,15 @@ struct HomeViewAddPopUp: View {
                 
                 HStack {
                     Text("Carbs(g) per 100g:")
-                    
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                        }
                     TextField("Type here", text: $grammsPer100g)
                         .contentShape(Rectangle())
                         .keyboardType(.numberPad)
                         .padding(15)
                         .background(colorScheme == .dark ? Color.darkStart : Color.whiteEnd)
                         .cornerRadius(15)
-                    
                     
                     Button(action: {}, label: {
                         Image(systemName: "magnifyingglass")
@@ -89,6 +108,15 @@ struct HomeViewAddPopUp: View {
                 .padding()
                 
                 Divider()
+                
+                Rectangle()
+                    .frame(height: geo.size.height * 0.15)
+                    .background(Color.clear)
+                    .foregroundColor(.clear)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
                 
                 HStack(spacing: geo.size.width / 2.5) {
                     Button(action: {
@@ -103,7 +131,6 @@ struct HomeViewAddPopUp: View {
                         Text("Save")
                     })
                     .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme))
-                    .padding(.bottom, 10)
                     
                     Button(action: {
                         showPopup.toggle()
@@ -113,17 +140,17 @@ struct HomeViewAddPopUp: View {
                         Text("Cancel")
                     })
                     .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme))
-                    .padding(.bottom, 10)
+                    
                 }
-                .padding(.top, geo.size.height * 0.1)
+                .padding(.bottom, 50)
+                
+                
             }
             .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
-            .cornerRadius(20)
-            .frame(width: geo.size.width * 0.95, height: geo.size.height * 0.71, alignment: .center)
-            .offset(x: 10, y: geo.size.height * 0.14)
             .font(.system(size: 12, weight: .bold))
             .foregroundColor(.cornBlue)
             .multilineTextAlignment(.center)
+            
             
         }
         .adaptsToKeyboard()

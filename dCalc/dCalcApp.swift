@@ -16,5 +16,9 @@ struct dCalcApp: App {
         WindowGroup {
             MainView(selectedIndex: $viewIndex)
         }
+        
     }
 }
+
+
+

@@ -15,7 +15,9 @@ struct MainView: View {
     @State private var showTabBar = true
     
     var body: some View {
+        
         GeometryReader { geometry in
+            
             ZStack {
                 switch selectedIndex {
                 case 0:
