@@ -44,9 +44,9 @@ struct HomeView: View {
                 }
                 .show(isVisible: $viewTransitionManager.showHomeView)
                 
-              PopupView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
-                .show(isVisible: $viewTransitionManager.showPopup)
-         }
+                PopupView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
+                    .show(isVisible: $viewTransitionManager.showPopup)
+            }
         }
         .edgesIgnoringSafeArea(.all)
         .onTapGesture {
