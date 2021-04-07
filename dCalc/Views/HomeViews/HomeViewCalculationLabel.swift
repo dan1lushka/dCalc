@@ -14,7 +14,7 @@ struct HomeViewCalculationLabel: View {
     var colorScheme: ColorScheme
     
     var body: some View {
-        Text("\(dosage > 0 ? String(dosage) : "0") \(dosage > 1 ? "units" : "unit")")
+        Text("\(String(dosage)) \(dosage == 1 ? "unit" : "units")")
             .padding()
             .font(.system(size: 15, weight: .bold))
             .foregroundColor(.cornBlue)
