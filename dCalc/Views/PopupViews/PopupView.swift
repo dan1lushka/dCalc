@@ -13,8 +13,9 @@ struct PopupView: View {
     
     @ObservedObject var calculationManager: CalculationManager
     @ObservedObject var viewTransitionManager: ViewTransitionManager
-
-    @State private var isLookUpError = false
+    
+    @State private var isError = false
+    @State private var errorMessage: String?
     
     var body: some View {
         
@@ -26,7 +27,7 @@ struct PopupView: View {
                 
                 ZStack {
                     popupClearRectangle(size: geo.size.height * 0.2)
-                    errorText
+                    errorText(message: nil)
                 }
                 
                 PopupViewBody(colorScheme: colorScheme, calculationManager: calculationManager)
@@ -39,21 +40,21 @@ struct PopupView: View {
                 }
                 .padding(.bottom, 50)
             }
-            .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
-            .font(.system(size: 12, weight: .bold))
+            .font(.system(size: 15, weight: .bold))
             .foregroundColor(.cornBlue)
             .multilineTextAlignment(.center)
+            .contentShape(Rectangle())
         }
         .adaptsToKeyboard()
     }
     
-    var errorText: some View {
-        return Text("Error: ")
+    func errorText(message: String?) -> some View {
+        return Text("Error: \(errorMessage ?? "unknown error")")
             .frame(height: 45)
             .lineLimit(2)
             .padding()
             .foregroundColor(.red)
-            .show(isVisible: $isLookUpError)
+            .show(isVisible: $isError)
     }
     
     func popupClearRectangle(size: CGFloat) -> some View {
@@ -63,26 +64,50 @@ struct PopupView: View {
             .foregroundColor(.clear)
             .contentShape(Rectangle())
             .onTapGesture {
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
     }
     
     func popupBottomButton(label: String) -> some View {
         return Button(action: {
             if label == "Save" {
-                isLookUpError = true
+                let isProductNameInvalid = calculationManager.productName.isEmptyOrZero
+                let isGrammsConsumedInvalid = calculationManager.grammsConsumed.isEmptyOrZero
+                let isGrammsPer100gInvalid = calculationManager.grammsPer100g.isEmptyOrZero
+                
+                errorMessage = "\(isProductNameInvalid ? "Product name field is invalid. " : "")\(isGrammsConsumedInvalid ? "Gramms consumed field is invalid. " : "")\(isGrammsPer100gInvalid ? "Gramms of carbs per 100g of product field is invalid" : "")"
+                
+                let isAllFieldsValid = !isProductNameInvalid && !isGrammsConsumedInvalid && !isGrammsPer100gInvalid
+                
+                if isAllFieldsValid {
+                    calculationManager.consumedFoodItems.items.append(
+                        ConsumedFood.Item(
+                            productName: calculationManager.productName,
+                            grammsConsumed: Double(calculationManager.grammsConsumed)!.round(to: 1),
+                            grammsPer100g: Double(calculationManager.grammsPer100g)!.round(to: 1)
+                        )
+                    )
+                    
+                    calculationManager.dosage = calculationManager.getDosage()
+                    closePopup()
+                } else {
+                    isError = true
+                }
             } else {
-                viewTransitionManager.showPopup = false
+                closePopup()
             }
-            
-            viewTransitionManager.showHomeView = true
-            viewTransitionManager.showTabBar = true
         }, label: {
             Text(label)
         })
         .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme))
     }
     
+    func closePopup() {
+        viewTransitionManager.showPopup = false
+        viewTransitionManager.showHomeView = true
+        viewTransitionManager.showTabBar = true
+        isError = false
+    }
 }
 
 struct HomeViewAddPopUp_Previews: PreviewProvider {
