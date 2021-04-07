@@ -65,17 +65,16 @@ struct PopupViewBody: View {
         .offset(x: 0, y: 5)
     }
     
+    //TODO: Check if the textfield tappable area can be changed without increasing the scale effect or font size
     func popupTextfield(text: Binding<String>, keyboard: UIKeyboardType) -> some View {
-        return TextField("Type here...", text: text)
-            .contentShape(Rectangle())
-            .padding(15)
+        return TextField("", text: text)
+            .padding()
+            .scaleEffect(x: 2, y: 2)
             .background(colorScheme == .dark ? Color.darkStart : Color.whiteEnd)
             .cornerRadius(15)
             .keyboardType(keyboard)
-            .contentShape(Rectangle())
     }
 }
-
 
 struct PopupViewBody_Previews: PreviewProvider {
     static var previews: some View {
