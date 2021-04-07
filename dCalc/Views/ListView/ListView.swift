@@ -10,13 +10,13 @@ import SwiftUI
 struct ListView: View {
     
     @ObservedObject var calculationManager: CalculationManager
-
-    @State var indices: [Int] = []
     
     var colorScheme: ColorScheme
     
     var body: some View {
+        
         GeometryReader { geo in
+            
             ZStack {
                 
                 colorScheme == .light ? Color.whiteStart : Color.darkEnd
@@ -25,12 +25,10 @@ struct ListView: View {
                     ViewHeader(width: geo.size.width * 0.95, text: "List")
                     
                     ScrollView {
-                        LazyVStack(spacing: 2) {
-                            ForEach (0..<calculationManager.products.items.count, id: \.self) { index in
-                                if !indices.contains(index) {
-                                    RowContent(colorScheme: colorScheme, item: calculationManager.products.items[index], index: index, indices : $indices)
-                                        .frame(height: 100)
-                                }
+                        VStack(spacing: 2) {
+                            ForEach (calculationManager.consumedFoodItems.items) { item in
+                                RowContent(items: $calculationManager.consumedFoodItems.items, colorScheme: colorScheme, item: item)
+                                    .frame(height: 100)
                             }
                         }
                     }
@@ -43,20 +41,23 @@ struct ListView: View {
 
 struct RowContent: View {
     
+    @Binding var items: [ConsumedFood.Item]
+    
     var colorScheme: ColorScheme
-    let item: Products.Item
-    let index: Int
+    var item: ConsumedFood.Item
     let width: CGFloat = 60
     
-    @Binding var indices: [Int]
     @State var offset = CGSize.zero
     @State var scale: CGFloat = 0.5
     
     //TODO: stop row from swiping from left to right
     
     var body: some View {
+        
         GeometryReader { geo in
+            
             HStack (spacing: 0) {
+                
                 HStack {
                     Image(systemName: "circle")
                         .resizable()
@@ -69,19 +70,18 @@ struct RowContent: View {
                     Spacer()
                     
                     VStack {
-                        Text(String(item.productName ?? ""))
+                        Text("\(item.productName)")
                             .animation(nil)
                             .foregroundColor(.cornBlue)
                             .font(.system(size: 15, weight: .bold))
                             .padding()
                         
-                        Text(String(item.grammsConsumed ?? ""))
+                        Text(String(format: "%.1f", item.grammsConsumed))
                             .animation(nil)
                             .foregroundColor(.cornBlue)
                             .font(.system(size: 15, weight: .bold))
                             .padding()
                     }
-                    
                 }
                 .frame(width: geo.size.width, alignment: .leading)
                 
@@ -93,7 +93,7 @@ struct RowContent: View {
                     .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
                     .shadow(color: .cornBlue, radius: 0, x: 0, y: 0)
                     .onTapGesture {
-                        indices.append(index)
+                        items.removeAll(where: { $0.id == item.id } )
                     }
             }
             .background(NeumorphicBackground(color: colorScheme, isHighlighted: true, shape: Rectangle()))
@@ -109,7 +109,7 @@ struct RowContent: View {
                                 self.scale = 1
                                 self.offset.width = -width
                             } else if self.offset.width < -(geo.size.width * 0.4) {
-                                indices.append(index)
+                                items.removeAll(where: { $0.id == item.id } )
                             } else {
                                 self.scale = 0.5
                                 self.offset = .zero
