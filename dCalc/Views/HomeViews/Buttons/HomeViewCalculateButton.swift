@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeViewCalculateButton: View {
-    
     var colorScheme: ColorScheme
     
     var body: some View {
@@ -21,6 +20,7 @@ struct HomeViewCalculateButton: View {
         }
         .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme == .light ? .light : .dark))
         .padding()
+        
     }
 }
 

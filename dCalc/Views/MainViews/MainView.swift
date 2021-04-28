@@ -11,6 +11,7 @@ struct MainView: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
+    @ObservedObject var networkingManager: NetworkingManager
     @ObservedObject var calculationManager: CalculationManager
     @ObservedObject var viewTransitionManager: ViewTransitionManager
     
@@ -21,11 +22,11 @@ struct MainView: View {
             ZStack {
                 switch viewTransitionManager.currentView {
                 case .home:
-                    HomeView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
+                    HomeView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager, networkingManager: networkingManager)
                 case .list:
                     ListView(calculationManager: calculationManager, colorScheme: colorScheme)
                 case .popup:
-                    PopupView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
+                    PopupView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager, networkingManager: networkingManager)
                 }
                 
                 VStack {
@@ -34,6 +35,9 @@ struct MainView: View {
                 }
                 .show(isVisible: $viewTransitionManager.showTabBar)
             }
+            .onAppear {
+                viewTransitionManager.currentView = .popup
+            }
         }
     }
 }
@@ -41,7 +45,7 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MainView(calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager())
+            MainView(networkingManager: NetworkingManager(), calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager())
         }
     }
 }

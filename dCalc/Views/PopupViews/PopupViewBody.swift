@@ -11,14 +11,18 @@ struct PopupViewBody: View {
     
     var colorScheme: ColorScheme
     
+    @ObservedObject var networkingManager: NetworkingManager
     @ObservedObject var calculationManager: CalculationManager
+    
+    @Binding var errorMessage: String
+    @Binding var isError: Bool
     
     var body: some View {
         VStack {
             HStack {
                 Text("Product Name:")
                     .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     }
                 
                 popupTextfield(text: $calculationManager.productName, keyboard: .default)
@@ -30,7 +34,7 @@ struct PopupViewBody: View {
             HStack {
                 Text("Gramms consumed:")
                     .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     }
                 
                 Spacer()
@@ -44,20 +48,48 @@ struct PopupViewBody: View {
             HStack {
                 Text("Carbs(g) per 100g:")
                     .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     }
                 
                 popupTextfield(text: $calculationManager.grammsPer100g, keyboard: .numberPad)
-                lookupButton
+                searchButton
             }
             .padding()
             
             Divider()
         }
+        
     }
     
-    var lookupButton: some View {
-        return Button(action: {}, label: {
+    var searchButton: some View {
+        return Button(action: {
+            if !calculationManager.productName.isEmpty {
+                
+                //TODO: add loading wheel while data is being loaded
+                
+                networkingManager.loadData(ingredient: calculationManager.productName) {
+                    if networkingManager.errorMessage.isEmpty {
+                        
+                        if let gramsPer100gResponse = networkingManager.response?.parsed.first?.food.nutrients.chocdf {
+                            isError = false
+                            calculationManager.grammsPer100g = String(gramsPer100gResponse)
+                        } else {
+                            isError = true
+                            errorMessage = "No carbs data found for a given product"
+                        }
+                        
+                    } else {
+                        isError = true
+                        errorMessage = networkingManager.errorMessage
+                        calculationManager.grammsPer100g = ""
+                    }
+                }
+                
+            } else {
+                errorMessage = "Product name cannot be empty"
+            }
+            
+        }, label: {
             Image(systemName: "magnifyingglass")
         })
         .buttonStyle(NeumorphicButtonStyle(paddingSize: 10, color: colorScheme))
@@ -76,12 +108,12 @@ struct PopupViewBody: View {
     }
 }
 
-struct PopupViewBody_Previews: PreviewProvider {
-    static var previews: some View {
-        PopupViewBody(colorScheme: .light, calculationManager: CalculationManager())
-            .background(NeumorphicBackground(color: .light, isHighlighted: false, shape: Rectangle()))
-            .font(.system(size: 12, weight: .bold))
-            .foregroundColor(.cornBlue)
-            .multilineTextAlignment(.center)
-    }
-}
+//struct PopupViewBody_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PopupViewBody(colorScheme: .light, calculationManager: CalculationManager(), networkingManager: NetworkingManager(), errorMessage: .constant(""), isError: .constant(false))
+//            .background(NeumorphicBackground(color: .light, isHighlighted: false, shape: Rectangle()))
+//            .font(.system(size: 12, weight: .bold))
+//            .foregroundColor(.cornBlue)
+//            .multilineTextAlignment(.center)
+//    }
+//}

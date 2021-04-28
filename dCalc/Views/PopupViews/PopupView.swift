@@ -13,9 +13,10 @@ struct PopupView: View {
     
     @ObservedObject var calculationManager: CalculationManager
     @ObservedObject var viewTransitionManager: ViewTransitionManager
+    @ObservedObject var networkingManager: NetworkingManager
     
     @State private var isError = false
-    @State private var errorMessage: String?
+    @State private var errorMessage = ""
     
     var body: some View {
         
@@ -30,7 +31,7 @@ struct PopupView: View {
                     errorText(message: nil)
                 }
                 
-                PopupViewBody(colorScheme: colorScheme, calculationManager: calculationManager)
+                PopupViewBody(colorScheme: colorScheme, networkingManager: networkingManager, calculationManager: calculationManager, errorMessage: $errorMessage, isError: $isError)
                 
                 popupClearRectangle(size: geo.size.height * 0.15)
                 
@@ -49,7 +50,7 @@ struct PopupView: View {
     }
     
     func errorText(message: String?) -> some View {
-        return Text("Error: \(errorMessage ?? "unknown error")")
+        return Text("Error: \(errorMessage)")
             .frame(height: 45)
             .lineLimit(2)
             .padding()
@@ -112,6 +113,6 @@ struct PopupView: View {
 
 struct HomeViewAddPopUp_Previews: PreviewProvider {
     static var previews: some View {
-        PopupView(calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager())
+        PopupView(calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager(), networkingManager: NetworkingManager())
     }
 }

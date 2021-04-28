@@ -13,6 +13,7 @@ struct HomeView: View {
     
     @ObservedObject var calculationManager: CalculationManager
     @ObservedObject var viewTransitionManager: ViewTransitionManager
+    @ObservedObject var networkingManager: NetworkingManager
     
     var body: some View {
         GeometryReader { geometry in
@@ -44,7 +45,7 @@ struct HomeView: View {
                 }
                 .show(isVisible: $viewTransitionManager.showHomeView)
                 
-                PopupView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
+                PopupView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager, networkingManager: networkingManager)
                     .show(isVisible: $viewTransitionManager.showPopup)
             }
         }
@@ -57,6 +58,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager())
+        HomeView(calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager(), networkingManager: NetworkingManager())
     }
 }
