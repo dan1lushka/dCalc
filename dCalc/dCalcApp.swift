@@ -12,10 +12,11 @@ struct dCalcApp: App {
     
     @StateObject var calculationManager = CalculationManager()
     @StateObject var viewTransitionManager = ViewTransitionManager()
+    @StateObject var networkingManager = NetworkingManager()
     
     var body: some Scene {
         WindowGroup {
-            MainView(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
+            MainView(networkingManager: networkingManager, calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
         }
         
     }
