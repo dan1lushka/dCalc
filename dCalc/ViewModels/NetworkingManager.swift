@@ -7,40 +7,95 @@
 
 import SwiftUI
 
-class NetworkingManager {
-    //https://api.edamam.com/api/food-database/v2/parser?ingr=red%20apple&app_id=28526b11&app_key=4de8fa36fbd575043b56c4fbd3858816
+class NetworkingManager: ObservableObject {
     
-    //Carbs are labeled as CHOCDF
-    // example here :
-    //https://api.edamam.com/api/food-database/v2/parser?ingr=red%20apple&app_id=28526b11&app_key=4de8fa36fbd575043b56c4fbd3858816
+    @Published var response: FoodInfoResponse?
+    @Published var errorMessage = ""
     
-    //DOC
-    //https://developer.edamam.com/food-database-api-docs
-    
-    //Autocomplete API
-    // http://api.edamam.com/auto-complete
-   
-    var response = ProductInfoResponse()
-    
-    func loadData() {
-        guard let url = URL(string: "https://itunes.apple.com/search?term=taylor+swift&entity=song") else {
-            print("Invalid URL")
+    func loadData(ingredient: String, callback: @escaping () -> ()) {
+        
+        guard let request = getURLRequest(ingredient: ingredient) else {
             return
         }
-
-        let request = URLRequest(url: url)
-
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
+            
             if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(ProductInfoResponse.self, from: data) {
-                    DispatchQueue.main.async {
-                        
-                        
-                    }
-                    return
+                
+                DispatchQueue.main.async {
+                    self.performResponseDecoding(data: data)
+                    callback()
                 }
+                
+                return
+            } else {
+                self.errorMessage = "Cannot get data"
+                print("Cannot get data")
             }
-            print("loadMovies has this error \(LocalizedError.self)")
+            
         }.resume()
+        
+    }
+    
+    private func getURLRequest(ingredient: String) -> URLRequest? {
+        print(ingredient)
+        
+        let apiID = "4ccff81d"
+        let apiKey = "e79e643e49de8cfd4b1425baa583798a"
+        
+        var components = URLComponents(string: "https://api.edamam.com/api/food-database/v2/parser?")!
+        
+        components.queryItems = [
+            URLQueryItem(name: "ingr", value: ingredient),
+            URLQueryItem(name: "app_id", value: apiID),
+            URLQueryItem(name: "app_key", value: apiKey)
+        ]
+        
+        guard let url = components.url else {
+            self.errorMessage = "Invalid url"
+            return nil
+        }
+        
+        print(url)
+        
+        return URLRequest(url: url)
+    }
+    
+    func performResponseDecoding(data: Data) {
+        
+        var isError = false
+        
+        do {
+            let decodedResponse = try JSONDecoder().decode(FoodInfoResponse.self, from: data)
+            self.response = decodedResponse
+            print(self.response?.parsed.first?.food.nutrients.chocdf ?? "carbs not found")
+            
+        } catch let DecodingError.dataCorrupted(context) {
+            isError = true
+            print(context.debugDescription)
+            
+        } catch let DecodingError.keyNotFound(key, context) {
+            isError = true
+            print("Key '\(key)' not found:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+            
+        } catch let DecodingError.valueNotFound(value, context) {
+            isError = true
+            print("Value '\(value)' not found:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+            
+        } catch let DecodingError.typeMismatch(type, context)  {
+            isError = true
+            print("Type '\(type)' mismatch:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+            
+        } catch {
+            isError = true
+            print("error: ", error)
+        }
+        
+        if isError {
+            self.errorMessage = "An unexpected error occured"
+        }
     }
 }
