@@ -22,7 +22,7 @@ struct HomeViewAddButton: View {
         .contentShape(Circle())
         .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme == .light ? .light : .dark))
         //FIXME: simultaneousGesture activates TapGesture when LongPressGesture is executed
-        .simultaneousGesture(LongPressGesture(minimumDuration: 0.3)
+        .simultaneousGesture(LongPressGesture(minimumDuration: 0.5)
                                 .onEnded { _ in
                                     let impact = UIImpactFeedbackGenerator(style: .heavy)
                                     impact.impactOccurred()
@@ -33,7 +33,6 @@ struct HomeViewAddButton: View {
                                 })
         .simultaneousGesture(TapGesture()
                                 .onEnded {
-                                    
                                     viewTransitionManager.showPopup = true
                                     viewTransitionManager.showHomeView = false
                                     viewTransitionManager.showTabBar = false
