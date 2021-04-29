@@ -13,7 +13,7 @@ import Foundation
 
 // MARK: - FoodInfoResponse
 struct FoodInfoResponse: Codable {
-    let text: String
+    let text: String?
     let parsed: [Parsed]
     let hints: [Hint]
     let links: Links?
@@ -61,7 +61,7 @@ enum CategoryLabel: String, Codable {
 
 // MARK: - Nutrients
 struct Nutrients: Codable {
-    let enercKcal, procnt, fat, chocdf: Double
+    let enercKcal, procnt, fat, chocdf: Double?
     let fibtg: Double?
 
     enum CodingKeys: String, CodingKey {
@@ -76,39 +76,26 @@ struct Nutrients: Codable {
 // MARK: - ServingSize
 struct ServingSize: Codable {
     let uri: String
-    let label: Label
+    let label: String?
     let quantity: Double
-}
-
-enum Label: String, Codable {
-    case apple = "Apple"
-    case cup = "Cup"
-    case gram = "Gram"
-    case kilogram = "Kilogram"
-    case ounce = "Ounce"
-    case package = "Package"
-    case pound = "Pound"
-    case serving = "Serving"
-    case tablespoon = "Tablespoon"
-    case whole = "Whole"
 }
 
 // MARK: - Measure
 struct Measure: Codable {
     let uri: String
-    let label: Label
+    let label: String?
     let qualified: [Qualified]?
 }
 
 // MARK: - Qualified
 struct Qualified: Codable {
-    let qualifiers: [Qualifier]
+    let qualifiers: [Qualifier]?
 }
 
 // MARK: - Qualifier
 struct Qualifier: Codable {
-    let uri: String
-    let label: String
+    let uri: String?
+    let label: String?
 }
 
 // MARK: - Links
@@ -130,11 +117,11 @@ struct Parsed: Codable {
 // MARK: - ParsedFood
 struct ParsedFood: Codable {
     let foodID: String
-    let label: Label
+    let label: String?
     let nutrients: Nutrients
     let category: Category
     let categoryLabel: CategoryLabel
-    let image: String
+    let image: String?
 
     enum CodingKeys: String, CodingKey {
         case foodID = "foodId"
