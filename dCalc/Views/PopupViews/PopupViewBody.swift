@@ -16,58 +16,68 @@ struct PopupViewBody: View {
     
     @Binding var errorMessage: String
     @Binding var isError: Bool
+    @State var isLoading = false
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("Product Name:")
-                    .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
+        ZStack {
+            VStack {
+                HStack {
+                    Text("Product Name:")
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        }
+                    
+                    popupTextfield(text: $calculationManager.productName, keyboard: .default)
+                }
+                .padding()
                 
-                popupTextfield(text: $calculationManager.productName, keyboard: .default)
+                Divider()
+                
+                HStack {
+                    Text("Gramms consumed:")
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        }
+                    
+                    Spacer()
+                    
+                    popupTextfield(text: $calculationManager.grammsConsumed, keyboard: .numberPad)
+                }
+                .padding()
+                
+                Divider()
+                
+                HStack {
+                    Text("Carbs(g) per 100g:")
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        }
+                    
+                    popupTextfield(text: $calculationManager.grammsPer100g, keyboard: .numberPad)
+                    searchButton
+                }
+                .padding()
+                
+                Divider()
             }
-            .padding()
-            
-            Divider()
-            
-            HStack {
-                Text("Gramms consumed:")
-                    .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
-                
-                Spacer()
-                
-                popupTextfield(text: $calculationManager.grammsConsumed, keyboard: .numberPad)
-            }
-            .padding()
-            
-            Divider()
-            
-            HStack {
-                Text("Carbs(g) per 100g:")
-                    .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
-                
-                popupTextfield(text: $calculationManager.grammsPer100g, keyboard: .numberPad)
-                searchButton
-            }
-            .padding()
-            
-            Divider()
+            ProgressView("Loading")
+                .frame(width: 100, height: 100, alignment: .center)
+                .background(NeumorphicBackground(color: colorScheme, isHighlighted: true, shape: Rectangle()))
+                .show(isVisible: $isLoading)
         }
-        
     }
     
     var searchButton: some View {
         return Button(action: {
+            
             if !calculationManager.productName.isEmpty {
                 
-                //TODO: add loading wheel while data is being loaded
+                isLoading = true
+                
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 
                 networkingManager.loadData(ingredient: calculationManager.productName) {
+                    
                     if networkingManager.errorMessage.isEmpty {
                         
                         if let gramsPer100gResponse = networkingManager.response?.parsed.first?.food.nutrients.chocdf {
@@ -83,10 +93,13 @@ struct PopupViewBody: View {
                         errorMessage = networkingManager.errorMessage
                         calculationManager.grammsPer100g = ""
                     }
+                    
+                    isLoading = false
                 }
-                
             } else {
+                isError = true
                 errorMessage = "Product name cannot be empty"
+                calculationManager.grammsPer100g = ""
             }
             
         }, label: {
@@ -108,12 +121,12 @@ struct PopupViewBody: View {
     }
 }
 
-//struct PopupViewBody_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PopupViewBody(colorScheme: .light, calculationManager: CalculationManager(), networkingManager: NetworkingManager(), errorMessage: .constant(""), isError: .constant(false))
-//            .background(NeumorphicBackground(color: .light, isHighlighted: false, shape: Rectangle()))
-//            .font(.system(size: 12, weight: .bold))
-//            .foregroundColor(.cornBlue)
-//            .multilineTextAlignment(.center)
-//    }
-//}
+struct PopupViewBody_Previews: PreviewProvider {
+    static var previews: some View {
+        PopupViewBody(colorScheme: .light, networkingManager: NetworkingManager(), calculationManager: CalculationManager(), errorMessage: .constant(""), isError: .constant(false))
+            .background(NeumorphicBackground(color: .light, isHighlighted: false, shape: Rectangle()))
+            .font(.system(size: 12, weight: .bold))
+            .foregroundColor(.cornBlue)
+            .multilineTextAlignment(.center)
+    }
+}
