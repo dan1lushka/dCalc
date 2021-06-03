@@ -11,9 +11,9 @@ struct HomeViewCalculateButton: View {
     var colorScheme: ColorScheme
     
     var body: some View {
-        Button(action: {
+        Button {
             print("Calculate button tapped action ")
-        }) {
+        } label: {
             Image(systemName: "equal")
                 .font(.system(size: 35, weight: .regular))
                 .foregroundColor(.cornBlue)
