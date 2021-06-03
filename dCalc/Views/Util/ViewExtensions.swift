@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+#if canImport(UIKit)
+extension View {
+  func hideKeyboard() {
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+  }
+}
+#endif
+
 extension Color {
     static let whiteStart = Color(red: 235 / 255, green: 235 / 255, blue: 240 / 255)
     static let whiteEnd = Color(red: 200 / 255, green: 200 / 255, blue: 205 / 255)
@@ -33,3 +41,9 @@ extension View {
     }
 }
 
+prefix func ! (value: Binding<Bool>) -> Binding<Bool> {
+    Binding<Bool>(
+        get: { !value.wrappedValue },
+        set: { value.wrappedValue = !$0 }
+    )
+}
