@@ -16,11 +16,31 @@ struct HomeViewSliderPanel: View {
     
     var body: some View {
         VStack {
-            NeumorphicSlider(viewTransitionManager: viewTransitionManager, range: 2.0...40.0, label: "Current", step: 0.1, unitsOfMeasure: "mmol", sliderValue: $calculationManager.currentSugarLevel)
+            NeumorphicSlider(viewTransitionManager: viewTransitionManager,
+                             range: 2.0...40.0,
+                             label: "Current",
+                             step: 0.1,
+                             unitsOfMeasure: "mmol",
+                             sliderValue: $calculationManager.currentSugarLevel)
                 .padding(.top, 20)
-            NeumorphicSlider(viewTransitionManager: viewTransitionManager, range: 4.5...10.0, label: "Target", step: 0.5, unitsOfMeasure: "mmol", sliderValue: $calculationManager.targetSugarLevel)
-            NeumorphicSlider(viewTransitionManager: viewTransitionManager, range: 1.0...30.0, label: "Carbs / Unit", step: 1, unitsOfMeasure: "g", sliderValue: $calculationManager.carbsPerUnitOfInsulin)
-            NeumorphicSlider(viewTransitionManager: viewTransitionManager, range: 1.0...5.0, label: "Unit / mmol", step: 0.5, unitsOfMeasure: "unit", sliderValue: $calculationManager.mmolPerUnitOfInsulin)
+            NeumorphicSlider(viewTransitionManager: viewTransitionManager,
+                             range: 4.5...10.0,
+                             label: "Target",
+                             step: 0.5,
+                             unitsOfMeasure: "mmol",
+                             sliderValue: $calculationManager.targetSugarLevel)
+            NeumorphicSlider(viewTransitionManager: viewTransitionManager,
+                             range: 1.0...30.0,
+                             label: "Carbs / Unit",
+                             step: 1,
+                             unitsOfMeasure: "g",
+                             sliderValue: $calculationManager.carbsPerUnitOfInsulin)
+            NeumorphicSlider(viewTransitionManager: viewTransitionManager,
+                             range: 1.0...5.0,
+                             label: "Unit / mmol",
+                             step: 0.5,
+                             unitsOfMeasure: "unit",
+                             sliderValue: $calculationManager.mmolPerUnitOfInsulin)
         }
         .background(colorScheme == .dark ? Color.darkStart : Color.whiteEnd)
         .cornerRadius(15)
