@@ -20,4 +20,10 @@ class ViewTransitionManager: ObservableObject {
     @Published var showTabBar = true
     @Published var showPopup = false
     @Published var showExtraButtons = false
+  
+  func closePopup() {
+    showPopup = false
+    showHomeView = true
+    showTabBar = true
+  }
 }
