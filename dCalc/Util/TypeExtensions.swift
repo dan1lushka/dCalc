@@ -9,9 +9,7 @@ import Foundation
 
 extension String {
     var isEmptyOrZero: Bool {
-        get {
-            self.count == 0 || self == "0"
-        }
+        return self.isEmpty || self == "0"
     }
 }
 
