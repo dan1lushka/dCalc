@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8357CA77264B15D200E50763 /* PopupSaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357CA76264B15D200E50763 /* PopupSaveButtonView.swift */; };
+		8357CA79264B15E400E50763 /* PopupCancelButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357CA78264B15E400E50763 /* PopupCancelButtonView.swift */; };
+		8357CA7B264B173600E50763 /* PopupViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357CA7A264B173600E50763 /* PopupViewManager.swift */; };
+		835A8ACE2666CB05001D58F1 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835A8ACD2666CB05001D58F1 /* K.swift */; };
+		8388EA3726682A7D007FB668 /* AutoCompleteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8388EA3626682A7D007FB668 /* AutoCompleteResponse.swift */; };
+		83F3ECB3264C78FF009C299A /* PopupSearchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3ECB2264C78FF009C299A /* PopupSearchButtonView.swift */; };
 		C81AA38D2607A7BF00313402 /* HomeViewSliderPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AA38C2607A7BF00313402 /* HomeViewSliderPanel.swift */; };
 		C81AA3902607A83400313402 /* HomeViewAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AA38F2607A83400313402 /* HomeViewAddButton.swift */; };
 		C81AA3932607A86B00313402 /* HomeViewExtraButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AA3922607A86B00313402 /* HomeViewExtraButtons.swift */; };
-		C81D8EB3261681A50014869C /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81D8EB2261681A50014869C /* AdaptsToKeyboard.swift */; };
+		C81D8EB3261681A50014869C /* AdaptsToKeyboardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81D8EB2261681A50014869C /* AdaptsToKeyboardViewModifier.swift */; };
+		C8411DDE263E303800AE3FD0 /* PopupAutoCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8411DDD263E303800AE3FD0 /* PopupAutoCompleteView.swift */; };
 		C86B374C2612E974008607C0 /* HomeViewCalculationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B374B2612E974008607C0 /* HomeViewCalculationLabel.swift */; };
 		C86B374F2614195A008607C0 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B374E2614195A008607C0 /* PopupView.swift */; };
-		C8A93ABF2604143B00912C35 /* dCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93ABE2604143B00912C35 /* dCalcApp.swift */; };
+		C8A93ABF2604143B00912C35 /* DCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93ABE2604143B00912C35 /* DCalcApp.swift */; };
 		C8A93AC12604143B00912C35 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A93AC02604143B00912C35 /* MainView.swift */; };
 		C8A93AC32604143C00912C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A93AC22604143C00912C35 /* Assets.xcassets */; };
 		C8A93AC62604143C00912C35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A93AC52604143C00912C35 /* Preview Assets.xcassets */; };
@@ -28,7 +35,6 @@
 		C8D6CD6826172400005BD734 /* ViewTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6CD6726172400005BD734 /* ViewTransitionManager.swift */; };
 		C8D6CD6C26172439005BD734 /* ConsumedFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6CD6B26172439005BD734 /* ConsumedFood.swift */; };
 		C8D6CD6F26172454005BD734 /* ProductInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6CD6E26172454005BD734 /* ProductInfoResponse.swift */; };
-		C8D6CD722617247A005BD734 /* ListViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6CD712617247A005BD734 /* ListViewManager.swift */; };
 		C8E3D16C2606337A0001479F /* NeumorphicBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E3D16B2606337A0001479F /* NeumorphicBackground.swift */; };
 		C8EDAA902619E7D000F6A551 /* TypeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EDAA8F2619E7D000F6A551 /* TypeExtensions.swift */; };
 		C8EDAA93261A02DE00F6A551 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EDAA92261A02DE00F6A551 /* NetworkingManager.swift */; };
@@ -39,14 +45,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8357CA76264B15D200E50763 /* PopupSaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSaveButtonView.swift; sourceTree = "<group>"; };
+		8357CA78264B15E400E50763 /* PopupCancelButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupCancelButtonView.swift; sourceTree = "<group>"; };
+		8357CA7A264B173600E50763 /* PopupViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewManager.swift; sourceTree = "<group>"; };
+		835A8ACD2666CB05001D58F1 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		8388EA3626682A7D007FB668 /* AutoCompleteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteResponse.swift; sourceTree = "<group>"; };
+		83F3ECB2264C78FF009C299A /* PopupSearchButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSearchButtonView.swift; sourceTree = "<group>"; };
 		C81AA38C2607A7BF00313402 /* HomeViewSliderPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSliderPanel.swift; sourceTree = "<group>"; };
 		C81AA38F2607A83400313402 /* HomeViewAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewAddButton.swift; sourceTree = "<group>"; };
 		C81AA3922607A86B00313402 /* HomeViewExtraButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewExtraButtons.swift; sourceTree = "<group>"; };
-		C81D8EB2261681A50014869C /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
+		C81D8EB2261681A50014869C /* AdaptsToKeyboardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboardViewModifier.swift; sourceTree = "<group>"; };
+		C8411DDD263E303800AE3FD0 /* PopupAutoCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupAutoCompleteView.swift; sourceTree = "<group>"; };
 		C86B374B2612E974008607C0 /* HomeViewCalculationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCalculationLabel.swift; sourceTree = "<group>"; };
 		C86B374E2614195A008607C0 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		C8A93ABB2604143B00912C35 /* dCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8A93ABE2604143B00912C35 /* dCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dCalcApp.swift; sourceTree = "<group>"; };
+		C8A93ABE2604143B00912C35 /* DCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCalcApp.swift; sourceTree = "<group>"; };
 		C8A93AC02604143B00912C35 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C8A93AC22604143C00912C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8A93AC52604143C00912C35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -62,7 +75,6 @@
 		C8D6CD6726172400005BD734 /* ViewTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionManager.swift; sourceTree = "<group>"; };
 		C8D6CD6B26172439005BD734 /* ConsumedFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedFood.swift; sourceTree = "<group>"; };
 		C8D6CD6E26172454005BD734 /* ProductInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoResponse.swift; sourceTree = "<group>"; };
-		C8D6CD712617247A005BD734 /* ListViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewManager.swift; sourceTree = "<group>"; };
 		C8E3D16B2606337A0001479F /* NeumorphicBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicBackground.swift; sourceTree = "<group>"; };
 		C8EDAA8F2619E7D000F6A551 /* TypeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeExtensions.swift; sourceTree = "<group>"; };
 		C8EDAA92261A02DE00F6A551 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
@@ -102,11 +114,11 @@
 		C8A93ABD2604143B00912C35 /* dCalc */ = {
 			isa = PBXGroup;
 			children = (
+				C8A93ABE2604143B00912C35 /* DCalcApp.swift */,
 				C8EDAA8E2619E7BF00F6A551 /* Util */,
 				C8D6CD6A2617241D005BD734 /* Models */,
 				C8D6CD63261723D8005BD734 /* ViewModels */,
 				C8A93ACE260416E900912C35 /* Views */,
-				C8A93ABE2604143B00912C35 /* dCalcApp.swift */,
 				C8A93AC22604143C00912C35 /* Assets.xcassets */,
 				C8A93AC72604143C00912C35 /* Info.plist */,
 				C8A93AC42604143C00912C35 /* Preview Content */,
@@ -152,7 +164,7 @@
 			children = (
 				C8A93ADC2604190A00912C35 /* ViewExtensions.swift */,
 				C8F0571326058279002A8C39 /* ShowModifier.swift */,
-				C81D8EB2261681A50014869C /* AdaptsToKeyboard.swift */,
+				C81D8EB2261681A50014869C /* AdaptsToKeyboardViewModifier.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -179,7 +191,11 @@
 			isa = PBXGroup;
 			children = (
 				C8D6CD5D26172247005BD734 /* PopupViewBody.swift */,
+				83F3ECB2264C78FF009C299A /* PopupSearchButtonView.swift */,
 				C86B374E2614195A008607C0 /* PopupView.swift */,
+				8357CA78264B15E400E50763 /* PopupCancelButtonView.swift */,
+				8357CA76264B15D200E50763 /* PopupSaveButtonView.swift */,
+				C8411DDD263E303800AE3FD0 /* PopupAutoCompleteView.swift */,
 			);
 			path = PopupViews;
 			sourceTree = "<group>";
@@ -187,10 +203,10 @@
 		C8D6CD63261723D8005BD734 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C8EDAA92261A02DE00F6A551 /* NetworkingManager.swift */,
 				C8D6CD64261723E8005BD734 /* CalculationManager.swift */,
 				C8D6CD6726172400005BD734 /* ViewTransitionManager.swift */,
-				C8D6CD712617247A005BD734 /* ListViewManager.swift */,
-				C8EDAA92261A02DE00F6A551 /* NetworkingManager.swift */,
+				8357CA7A264B173600E50763 /* PopupViewManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -200,6 +216,7 @@
 			children = (
 				C8D6CD6B26172439005BD734 /* ConsumedFood.swift */,
 				C8D6CD6E26172454005BD734 /* ProductInfoResponse.swift */,
+				8388EA3626682A7D007FB668 /* AutoCompleteResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				C8EDAA8F2619E7D000F6A551 /* TypeExtensions.swift */,
+				835A8ACD2666CB05001D58F1 /* K.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -242,6 +260,7 @@
 				C8A93AB72604143B00912C35 /* Sources */,
 				C8A93AB82604143B00912C35 /* Frameworks */,
 				C8A93AB92604143B00912C35 /* Resources */,
+				83FA35B326602FE40031D7E7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -296,37 +315,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		83FA35B326602FE40031D7E7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C8A93AB72604143B00912C35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C8D6CD65261723E8005BD734 /* CalculationManager.swift in Sources */,
+				835A8ACE2666CB05001D58F1 /* K.swift in Sources */,
 				C8A93AD42604177500912C35 /* ListView.swift in Sources */,
 				C8E3D16C2606337A0001479F /* NeumorphicBackground.swift in Sources */,
 				C8F0571426058279002A8C39 /* ShowModifier.swift in Sources */,
 				C8D6CD5E26172247005BD734 /* PopupViewBody.swift in Sources */,
 				C8A93ADD2604190A00912C35 /* ViewExtensions.swift in Sources */,
 				C8F0570E2604ED82002A8C39 /* CustomTabBar.swift in Sources */,
+				8357CA79264B15E400E50763 /* PopupCancelButtonView.swift in Sources */,
 				C8A93AD8260418C100912C35 /* NeumorphicButtonStyle.swift in Sources */,
 				C8A93AD12604176A00912C35 /* HomeView.swift in Sources */,
 				C81AA3902607A83400313402 /* HomeViewAddButton.swift in Sources */,
 				C8A93AC12604143B00912C35 /* MainView.swift in Sources */,
 				C8D6CD6C26172439005BD734 /* ConsumedFood.swift in Sources */,
 				C81AA38D2607A7BF00313402 /* HomeViewSliderPanel.swift in Sources */,
+				8357CA7B264B173600E50763 /* PopupViewManager.swift in Sources */,
 				C86B374F2614195A008607C0 /* PopupView.swift in Sources */,
 				C8F0571126050571002A8C39 /* NeumorphicSlider.swift in Sources */,
-				C81D8EB3261681A50014869C /* AdaptsToKeyboard.swift in Sources */,
+				8388EA3726682A7D007FB668 /* AutoCompleteResponse.swift in Sources */,
+				C81D8EB3261681A50014869C /* AdaptsToKeyboardViewModifier.swift in Sources */,
 				C8C9D2292609A43800A595F1 /* HomeViewCalculateButton.swift in Sources */,
 				C8D6CD6F26172454005BD734 /* ProductInfoResponse.swift in Sources */,
+				8357CA77264B15D200E50763 /* PopupSaveButtonView.swift in Sources */,
 				C8C9D2262609A3DB00A595F1 /* HomeViewCalculationPanel.swift in Sources */,
 				C8EDAA902619E7D000F6A551 /* TypeExtensions.swift in Sources */,
+				83F3ECB3264C78FF009C299A /* PopupSearchButtonView.swift in Sources */,
 				C8F36DD1260B288600F8E4BE /* ViewHeader.swift in Sources */,
 				C8D6CD6826172400005BD734 /* ViewTransitionManager.swift in Sources */,
-				C8A93ABF2604143B00912C35 /* dCalcApp.swift in Sources */,
+				C8A93ABF2604143B00912C35 /* DCalcApp.swift in Sources */,
+				C8411DDE263E303800AE3FD0 /* PopupAutoCompleteView.swift in Sources */,
 				C86B374C2612E974008607C0 /* HomeViewCalculationLabel.swift in Sources */,
 				C8EDAA93261A02DE00F6A551 /* NetworkingManager.swift in Sources */,
-				C8D6CD722617247A005BD734 /* ListViewManager.swift in Sources */,
 				C81AA3932607A86B00313402 /* HomeViewExtraButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
