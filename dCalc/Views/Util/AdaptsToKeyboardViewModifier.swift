@@ -17,7 +17,9 @@ struct AdaptsToKeyboard: ViewModifier {
                 .padding(.bottom, self.currentHeight)
                 .onAppear(perform: {
                     NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillShowNotification)
-                        .merge(with: NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillChangeFrameNotification))
+                        .merge(with: NotificationCenter.Publisher(center: NotificationCenter.default,
+                               name: UIResponder.keyboardWillChangeFrameNotification)
+                        )
                         .compactMap { notification in
                             withAnimation(.easeOut(duration: 0.16)) {
                                 notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
@@ -29,7 +31,7 @@ struct AdaptsToKeyboard: ViewModifier {
                         .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
                     
                     NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillHideNotification)
-                        .compactMap { notification in
+                        .compactMap { _ in
                             CGFloat.zero
                         }
                         .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
@@ -37,4 +39,3 @@ struct AdaptsToKeyboard: ViewModifier {
         }
     }
 }
-
