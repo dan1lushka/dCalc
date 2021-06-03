@@ -13,118 +13,126 @@ import Foundation
 
 // MARK: - FoodInfoResponse
 struct FoodInfoResponse: Codable {
-    let text: String?
-    let parsed: [Parsed]
-    let hints: [Hint]
-    let links: Links?
-
-    enum CodingKeys: String, CodingKey {
-        case text, parsed, hints
-        case links = "_links"
-    }
+  let text: String?
+  let parsed: [Parsed]
+  let hints: [Hint]
+  let links: Links?
+  
+  enum CodingKeys: String, CodingKey {
+    case text, parsed, hints
+    case links = "_links"
+  }
 }
 
 // MARK: - Hint
 struct Hint: Codable {
-    let food: HintFood
-    let measures: [Measure]
+  let food: HintFood
+  let measures: [Measure]
 }
 
 // MARK: - HintFood
 struct HintFood: Codable {
-    let foodID, label: String
-    let nutrients: Nutrients
-    let category: Category
-    let categoryLabel: CategoryLabel
-    let image: String?
-    let foodContentsLabel, brand: String?
-    let servingSizes: [ServingSize]?
-    let servingsPerContainer: Double?
-
-    enum CodingKeys: String, CodingKey {
-        case foodID = "foodId"
-        case label, nutrients, category, categoryLabel, image, foodContentsLabel, brand, servingSizes, servingsPerContainer
-    }
+  let foodID, label: String
+  let nutrients: Nutrients
+  let category: Category
+  let categoryLabel: CategoryLabel
+  let image: String?
+  let foodContentsLabel, brand: String?
+  let servingSizes: [ServingSize]?
+  let servingsPerContainer: Double?
+  
+  enum CodingKeys: String, CodingKey {
+    case foodID = "foodId"
+    case label
+    case nutrients
+    case category
+    case categoryLabel
+    case image
+    case foodContentsLabel
+    case brand
+    case servingSizes
+    case servingsPerContainer
+  }
 }
 
 enum Category: String, Codable {
-    case fastFoods = "Fast foods"
-    case genericFoods = "Generic foods"
-    case genericMeals = "Generic meals"
-    case packagedFoods = "Packaged foods"
+  case fastFoods = "Fast foods"
+  case genericFoods = "Generic foods"
+  case genericMeals = "Generic meals"
+  case packagedFoods = "Packaged foods"
 }
 
 enum CategoryLabel: String, Codable {
-    case food = "food"
-    case meal = "meal"
+  case food
+  case meal
 }
 
 // MARK: - Nutrients
 struct Nutrients: Codable {
-    let enercKcal, procnt, fat, chocdf: Double?
-    let fibtg: Double?
-
-    enum CodingKeys: String, CodingKey {
-        case enercKcal = "ENERC_KCAL"
-        case procnt = "PROCNT"
-        case fat = "FAT"
-        case chocdf = "CHOCDF"
-        case fibtg = "FIBTG"
-    }
+  let enercKcal, procnt, fat, chocdf: Double?
+  let fibtg: Double?
+  
+  enum CodingKeys: String, CodingKey {
+    case enercKcal = "ENERC_KCAL"
+    case procnt = "PROCNT"
+    case fat = "FAT"
+    case chocdf = "CHOCDF"
+    case fibtg = "FIBTG"
+  }
 }
 
 // MARK: - ServingSize
 struct ServingSize: Codable {
-    let uri: String
-    let label: String?
-    let quantity: Double
+  let uri: String
+  let label: String?
+  let quantity: Double
 }
 
 // MARK: - Measure
 struct Measure: Codable {
-    let uri: String
-    let label: String?
-    let qualified: [Qualified]?
+  let uri: String
+  let label: String?
+  let qualified: [Qualified]?
 }
 
 // MARK: - Qualified
 struct Qualified: Codable {
-    let qualifiers: [Qualifier]?
+  let qualifiers: [Qualifier]?
 }
 
 // MARK: - Qualifier
 struct Qualifier: Codable {
-    let uri: String?
-    let label: String?
+  let uri: String?
+  let label: String?
 }
 
 // MARK: - Links
 struct Links: Codable {
-    let next: Next
+  let next: Next
 }
 
 // MARK: - Next
 struct Next: Codable {
-    let title: String
-    let href: String
+  let title: String
+  let href: String
 }
 
 // MARK: - Parsed
 struct Parsed: Codable {
-    let food: ParsedFood
+  let food: ParsedFood
 }
 
 // MARK: - ParsedFood
 struct ParsedFood: Codable {
-    let foodID: String
-    let label: String?
-    let nutrients: Nutrients
-    let category: Category
-    let categoryLabel: CategoryLabel
-    let image: String?
+  let foodID: String
+  let label: String?
+  let nutrients: Nutrients
+  let category: Category
+  let categoryLabel: CategoryLabel
+  let image: String?
 
-    enum CodingKeys: String, CodingKey {
-        case foodID = "foodId"
-        case label, nutrients, category, categoryLabel, image
-    }
+  enum CodingKeys: String, CodingKey {
+    case foodID = "foodId"
+    case label, nutrients, category, categoryLabel, image
+  }
 }
