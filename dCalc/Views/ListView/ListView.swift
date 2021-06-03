@@ -26,7 +26,7 @@ struct ListView: View {
                     
                     ScrollView {
                         VStack(spacing: 2) {
-                            ForEach (calculationManager.consumedFoodItems.items) { item in
+                            ForEach(calculationManager.consumedFoodItems.items) { item in
                                 RowContent(items: $calculationManager.consumedFoodItems.items, colorScheme: colorScheme, item: item)
                                     .frame(height: 100)
                             }
@@ -50,13 +50,13 @@ struct RowContent: View {
     @State var offset = CGSize.zero
     @State var scale: CGFloat = 0.5
     
-    //TODO: stop row from swiping from left to right
+    // todo: stop row from swiping from left to right
     
     var body: some View {
         
         GeometryReader { geo in
             
-            HStack (spacing: 0) {
+            HStack(spacing: 0) {
                 
                 HStack {
                     Image(systemName: "circle")
@@ -93,7 +93,7 @@ struct RowContent: View {
                     .background(NeumorphicBackground(color: colorScheme, isHighlighted: false, shape: Rectangle()))
                     .shadow(color: .cornBlue, radius: 0, x: 0, y: 0)
                     .onTapGesture {
-                        items.removeAll(where: { $0.id == item.id } )
+                        items.removeAll(where: { $0.id == item.id })
                     }
             }
             .background(NeumorphicBackground(color: colorScheme, isHighlighted: true, shape: Rectangle()))
@@ -109,7 +109,7 @@ struct RowContent: View {
                                 self.scale = 1
                                 self.offset.width = -width
                             } else if self.offset.width < -(geo.size.width * 0.4) {
-                                items.removeAll(where: { $0.id == item.id } )
+                                items.removeAll(where: { $0.id == item.id })
                             } else {
                                 self.scale = 0.5
                                 self.offset = .zero
@@ -125,5 +125,3 @@ struct ListView_Previews: PreviewProvider {
         ListView(calculationManager: CalculationManager(), colorScheme: .light)
     }
 }
-
-
