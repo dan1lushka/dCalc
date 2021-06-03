@@ -19,9 +19,9 @@ struct CustomTabBar: View {
     var body: some View {
         HStack(spacing: spacing) {
             ForEach(0 ..< 2) { num in
-                Button(action: {
+                Button {
                     viewTransitionManager.currentView = ViewTransitionManager.ViewState(rawValue: num)!
-                }) {
+                } label: {
                     Image(systemName: tabBarImages[num])
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(viewTransitionManager.currentView.rawValue == num ?
