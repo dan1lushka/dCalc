@@ -19,9 +19,9 @@ struct HomeViewExtraButtons: View {
         VStack {
             HStack {
                 ForEach(0 ..< 3) { num in
-                    Button(action: {
-                        //TODO: add action
-                    }) {
+                    Button {
+                        // todo: add action
+                    } label: {
                         Image(systemName: buttonImages[num])
                             .font(.system(size: 25, weight: .regular))
                             .foregroundColor(.cornBlue)
