@@ -17,4 +17,3 @@ class ConsumedFood {
 
     var items: [Item] = []
 }
-
