@@ -37,7 +37,12 @@ struct NeumorphicSlider_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             LinearGradient( .whiteStart, .whiteEnd)
-            NeumorphicSlider(viewTransitionManager: ViewTransitionManager(), range: 2.0 ... 40.0, label: "Sugar Level", step: 0.1, unitsOfMeasure: "mmol", sliderValue: .constant(10.0))
+            NeumorphicSlider(viewTransitionManager: ViewTransitionManager(),
+                             range: 2.0 ... 40.0,
+                             label: "Sugar Level",
+                             step: 0.1,
+                             unitsOfMeasure: "mmol",
+                             sliderValue: .constant(10.0))
         }
     }
 }
