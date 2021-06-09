@@ -18,36 +18,33 @@ class PopupViewManager: ObservableObject {
   @Published var isLoading = false
   
   @Published var autoCompleteList = [String]() as Codable
+  @Published var imageURLList = [String]()
+  
+  func populateImageURLsFromAutoCompleteList(networkingManager: NetworkingManager) {
+    if let list = autoCompleteList as? [String] {
+      for item in list {
+        networkingManager.loadData(ingredient: item, objectType: FoodInfoResponse.self) {
+          if let response = networkingManager.response as? FoodInfoResponse {
+            self.imageURLList.append(response.parsed.first?.food.image ?? "")
+          }
+        }
+      }
+    }
+  }
   
   func asignProductNameValid(isInvalid: Bool) {
-    if isInvalid {
-      isProductNameInvalid = true
-    } else {
-      isProductNameInvalid = false
-    }
+    isProductNameInvalid = isInvalid
   }
   
-  func asignGrammsConsumedInvalid(isValid: Bool) {
-    if isValid {
-      isGrammsConsumedInvalid = true
-    } else {
-      isGrammsConsumedInvalid = false
-    }
+  func asignGrammsConsumedInvalid(isInvalid: Bool) {
+    isGrammsConsumedInvalid = isInvalid
   }
   
-  func asignGrammsPer100gInvalid(isValid: Bool) {
-    if isValid {
-      isGrammsPer100gInvalid = true
-    } else {
-      isGrammsPer100gInvalid = false
-    }
+  func asignGrammsPer100gInvalid(isInvalid: Bool) {
+    isGrammsPer100gInvalid = isInvalid
   }
   
   func asignAllFieldsInvalid() {
-    if !isProductNameInvalid && !isGrammsConsumedInvalid && !isGrammsPer100gInvalid {
-      isAllFieldsValid = true
-    } else {
-      isAllFieldsValid = false
-    }
+    isAllFieldsValid = !isProductNameInvalid && !isGrammsConsumedInvalid && !isGrammsPer100gInvalid
   }
 }
