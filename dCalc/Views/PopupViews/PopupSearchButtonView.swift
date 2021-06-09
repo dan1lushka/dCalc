@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PopupSearchButtonView: View {
   
-  var colorScheme: ColorScheme
+  @Environment(\.colorScheme) var colorScheme: ColorScheme
   
   @ObservedObject var networkingManager: NetworkingManager
   @ObservedObject var calculationManager: CalculationManager
@@ -27,7 +27,7 @@ struct PopupSearchButtonView: View {
         networkingManager.loadData(ingredient: calculationManager.productName, objectType: FoodInfoResponse.self) {
           
           if networkingManager.errorMessage.isEmpty {
-
+            
             if let response = networkingManager.response as? FoodInfoResponse {
               
               if let gramsPer100gResponse = response.parsed.first?.food.nutrients.chocdf {
@@ -56,16 +56,15 @@ struct PopupSearchButtonView: View {
     }, label: {
       Image(systemName: "magnifyingglass")
     })
-    .buttonStyle(NeumorphicButtonStyle(paddingSize: 10, color: colorScheme))
-    .padding(.bottom, 10)
-    .offset(x: 0, y: 5)
+      .buttonStyle(NeumorphicButtonStyle(paddingSize: 10))
+      .padding(.bottom, 10)
+      .offset(x: 0, y: 5)
   }
 }
 
 struct PopupSearchButtonView_Previews: PreviewProvider {
   static var previews: some View {
-    PopupSearchButtonView(colorScheme: .light,
-                          networkingManager: NetworkingManager(),
+    PopupSearchButtonView(networkingManager: NetworkingManager(),
                           calculationManager: CalculationManager(),
                           popupViewManager: PopupViewManager()
     )

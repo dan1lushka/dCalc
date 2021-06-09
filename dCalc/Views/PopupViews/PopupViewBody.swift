@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PopupViewBody: View {
   
-  var colorScheme: ColorScheme
+  @Environment(\.colorScheme) var colorScheme: ColorScheme
   var width: CGFloat
   var height: CGFloat
   
@@ -32,7 +32,7 @@ struct PopupViewBody: View {
       
       ProgressView("Loading")
         .frame(width: 100, height: 100, alignment: .center)
-        .background(NeumorphicBackground(color: colorScheme, isHighlighted: true, shape: Rectangle()))
+        .background(NeumorphicBackground(isHighlighted: true, shape: Rectangle()))
         .show(isVisible: $popupViewManager.isLoading)
     }
   }
@@ -75,15 +75,14 @@ struct PopupViewBody: View {
       
       popupTextfield(text: $calculationManager.grammsPer100g, keyboard: .numberPad)
       
-      PopupSearchButtonView(colorScheme: colorScheme,
-                            networkingManager: networkingManager,
+      PopupSearchButtonView(networkingManager: networkingManager,
                             calculationManager: calculationManager,
                             popupViewManager: popupViewManager
       )
     }
     .padding()
   }
-  
+  // todo: check focusState button containing textifield
   // todo: Check if the textfield tappable area can be changed without increasing the scale effect or font size
   func popupTextfield(text: Binding<String>, keyboard: UIKeyboardType) -> some View {
     return TextField("", text: text, onCommit: {
@@ -104,18 +103,17 @@ struct PopupViewBody: View {
     .keyboardType(keyboard)
     .disableAutocorrection(true)
   }
-  
 }
 
 struct PopupViewBody_Previews: PreviewProvider {
   static var previews: some View {
-    PopupViewBody(colorScheme: .light,
-                  width: 300,
+    PopupViewBody(width: 300,
                   height: 300,
                   networkingManager: NetworkingManager(),
                   calculationManager: CalculationManager(),
-                  popupViewManager: PopupViewManager())
-      .background(NeumorphicBackground(color: .light, isHighlighted: false, shape: Rectangle()))
+                  popupViewManager: PopupViewManager()
+    )
+      .background(NeumorphicBackground(isHighlighted: false, shape: Rectangle()))
       .font(.system(size: 12, weight: .bold))
       .foregroundColor(.cornBlue)
       .multilineTextAlignment(.center)

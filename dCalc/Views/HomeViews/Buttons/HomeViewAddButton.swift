@@ -22,7 +22,7 @@ struct HomeViewAddButton: View {
                 .foregroundColor(.cornBlue)
         }
         .contentShape(Circle())
-        .buttonStyle(NeumorphicButtonStyle(paddingSize: 25, color: colorScheme == .light ? .light : .dark))
+        .buttonStyle(NeumorphicButtonStyle(paddingSize: 25))
         // fixme: simultaneousGesture activates TapGesture when LongPressGesture is executed
         .simultaneousGesture(LongPressGesture(minimumDuration: 0.5)
                                 .onEnded { _ in

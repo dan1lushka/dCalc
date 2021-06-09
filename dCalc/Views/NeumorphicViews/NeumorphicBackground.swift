@@ -9,14 +9,14 @@ import SwiftUI
 
 struct NeumorphicBackground<S: Shape>: View {
     
-    var color: ColorScheme
+  @Environment(\.colorScheme) var colorScheme: ColorScheme
     var isHighlighted: Bool
     var shape: S
     
     var body: some View {
         ZStack {
             if isHighlighted {
-                if color == .dark {
+                if colorScheme == .dark {
                     shape
                         .fill(Color.darkEnd)
                         .overlay(
@@ -52,7 +52,7 @@ struct NeumorphicBackground<S: Shape>: View {
                         
                 }
             } else {
-                if color == .dark {
+                if colorScheme == .dark {
                     shape
                         .fill(LinearGradient(Color.darkStart, Color.darkEnd))
                         .shadow(color: Color.darkStart, radius: 5, x: -3, y: -3)
@@ -71,7 +71,7 @@ struct NeumorphicBackground<S: Shape>: View {
 
 struct NeumorphicBackground_Previews: PreviewProvider {
     static var previews: some View {
-        NeumorphicBackground(color: ColorScheme.light, isHighlighted: false, shape: Rectangle())
+        NeumorphicBackground(isHighlighted: false, shape: Rectangle())
             .frame(width: 100, height: 100, alignment: .center)
     }
 }

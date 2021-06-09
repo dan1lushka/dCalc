@@ -28,7 +28,7 @@ struct CustomTabBar: View {
                                             (colorScheme == .light ? .black: .white) :
                                             .cornBlue)
                 }
-                .buttonStyle(NeumorphicButtonStyle(paddingSize: 12, color: colorScheme == .light ? .light : .dark))
+                .buttonStyle(NeumorphicButtonStyle(paddingSize: 12))
             }
         }
     }

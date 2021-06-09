@@ -13,18 +13,18 @@ struct PopupSaveButtonView: View {
   @ObservedObject var viewTransitionManager: ViewTransitionManager
   @ObservedObject var popupViewManager: PopupViewManager
   
-  var colorScheme: ColorScheme
+  @Environment(\.colorScheme) var colorScheme: ColorScheme
   
   var body: some View {
     
     Button {
       popupViewManager.asignProductNameValid(isInvalid: calculationManager.productName.isEmptyOrZero)
-      popupViewManager.asignGrammsConsumedInvalid(isValid: calculationManager.grammsConsumed.isEmptyOrZero)
-      popupViewManager.asignGrammsPer100gInvalid(isValid: calculationManager.grammsPer100g.isEmptyOrZero)
+      popupViewManager.asignGrammsConsumedInvalid(isInvalid: calculationManager.grammsConsumed.isEmptyOrZero)
+      popupViewManager.asignGrammsPer100gInvalid(isInvalid: calculationManager.grammsPer100g.isEmptyOrZero)
       
       popupViewManager.errorMessage = "\(popupViewManager.isProductNameInvalid ? "Product name field is invalid. " : "")" +
-        "\(popupViewManager.isGrammsConsumedInvalid ? "Gramms consumed field is invalid. " : "")" +
-        "\(popupViewManager.isGrammsPer100gInvalid ? "Gramms of carbs per 100g of product field is invalid" : "")"
+      "\(popupViewManager.isGrammsConsumedInvalid ? "Gramms consumed field is invalid. " : "")" +
+      "\(popupViewManager.isGrammsPer100gInvalid ? "Gramms of carbs per 100g of product field is invalid" : "")"
       
       popupViewManager.asignAllFieldsInvalid()
       
@@ -45,7 +45,7 @@ struct PopupSaveButtonView: View {
     } label: {
       Text("Save")
     }
-    .buttonStyle(NeumorphicButtonStyle(paddingSize: 30, color: colorScheme))
+    .buttonStyle(NeumorphicButtonStyle(paddingSize: 30))
   }
 }
 
@@ -53,7 +53,7 @@ struct PopupSaveButtonView_Previews: PreviewProvider {
   static var previews: some View {
     PopupCancelButtonView(calculationManager: CalculationManager(),
                           viewTransitionManager: ViewTransitionManager(),
-                          popupViewManager: PopupViewManager(),
-                          colorScheme: .light)
+                          popupViewManager: PopupViewManager()
+    )
   }
 }

@@ -11,7 +11,7 @@ struct HomeViewCalculationLabel: View {
     
     @Binding var dosage: Int
     
-    var colorScheme: ColorScheme
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
         Text("\(String(dosage)) \(dosage == 1 ? "unit" : "units")")
@@ -26,6 +26,6 @@ struct HomeViewCalculationLabel: View {
 
 struct HomeViewCalculationLabel_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewCalculationLabel(dosage: .constant(2), colorScheme: .dark)
+      HomeViewCalculationLabel(dosage: .constant(2))
     }
 }

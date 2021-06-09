@@ -9,14 +9,14 @@ import SwiftUI
 
 struct NeumorphicButtonStyle: ButtonStyle {
     var paddingSize: CGFloat
-    var color: ColorScheme
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding(paddingSize)
             .contentShape(Circle())
             .background(
-                NeumorphicBackground(color: color, isHighlighted: configuration.isPressed, shape: Circle())
+                NeumorphicBackground(isHighlighted: configuration.isPressed, shape: Circle())
             )
     }
 }

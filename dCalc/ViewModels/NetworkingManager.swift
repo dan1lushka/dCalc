@@ -19,6 +19,10 @@ class NetworkingManager: ObservableObject {
   
   func loadData<T: Codable>(ingredient: String, objectType: T.Type, callback: @escaping () -> Void) {
     
+    if ingredient.isEmpty {
+      return
+    }
+    
     let request = getURLRequest(ingredient: ingredient, objectType: objectType)
     
     guard let request = request else {

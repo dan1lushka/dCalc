@@ -28,8 +28,7 @@ struct MainView: View {
                            networkingManager: networkingManager,
                            popupViewManager: popupViewManager)
                 case .list:
-                    ListView(calculationManager: calculationManager,
-                             colorScheme: colorScheme)
+                    ListView(calculationManager: calculationManager)
                 case .popup:
                   PopupView(calculationManager: calculationManager,
                             viewTransitionManager: viewTransitionManager,

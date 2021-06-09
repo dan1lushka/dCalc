@@ -13,7 +13,7 @@ struct PopupCancelButtonView: View {
   @ObservedObject var viewTransitionManager: ViewTransitionManager
   @ObservedObject var popupViewManager: PopupViewManager
   
-  var colorScheme: ColorScheme
+  @Environment(\.colorScheme) var colorScheme: ColorScheme
   
   var body: some View {
     
@@ -23,7 +23,7 @@ struct PopupCancelButtonView: View {
     } label: {
       Text("Cancel")
     }
-    .buttonStyle(NeumorphicButtonStyle(paddingSize: 30, color: colorScheme))
+    .buttonStyle(NeumorphicButtonStyle(paddingSize: 30))
   }
 }
 
@@ -31,7 +31,7 @@ struct PopupCancelButtonView_Previews: PreviewProvider {
   static var previews: some View {
     PopupCancelButtonView(calculationManager: CalculationManager(),
                           viewTransitionManager: ViewTransitionManager(),
-                          popupViewManager: PopupViewManager(),
-                          colorScheme: .light)
+                          popupViewManager: PopupViewManager()
+    )
   }
 }

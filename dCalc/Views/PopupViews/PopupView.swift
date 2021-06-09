@@ -29,8 +29,7 @@ struct PopupView: View {
         }
         
         ZStack {
-          PopupViewBody(colorScheme: colorScheme,
-                        width: geo.size.width,
+          PopupViewBody(width: geo.size.width,
                         height: geo.size.height,
                         networkingManager: networkingManager,
                         calculationManager: calculationManager,
@@ -39,7 +38,6 @@ struct PopupView: View {
           
           PopupAutoCompleteView(height: geo.size.height,
                                 width: geo.size.width,
-                                colorScheme: colorScheme,
                                 calculationManager: calculationManager,
                                 popupViewManager: popupViewManager,
                                 networkingManager: networkingManager,
@@ -52,14 +50,12 @@ struct PopupView: View {
         HStack(spacing: geo.size.width / 2.5) {
           PopupSaveButtonView(calculationManager: calculationManager,
                               viewTransitionManager: viewTransitionManager,
-                              popupViewManager: popupViewManager,
-                              colorScheme: colorScheme
+                              popupViewManager: popupViewManager
           )
           
           PopupCancelButtonView(calculationManager: calculationManager,
                                 viewTransitionManager: viewTransitionManager,
-                                popupViewManager: popupViewManager,
-                                colorScheme: colorScheme
+                                popupViewManager: popupViewManager
           )
         }
         .padding(.bottom, 50)

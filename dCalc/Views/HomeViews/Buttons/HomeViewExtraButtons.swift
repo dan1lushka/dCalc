@@ -26,7 +26,7 @@ struct HomeViewExtraButtons: View {
                             .font(.system(size: 25, weight: .regular))
                             .foregroundColor(.cornBlue)
                     }
-                    .buttonStyle(NeumorphicButtonStyle(paddingSize: 15, color: (colorScheme == .light ? .light : .dark)))
+                    .buttonStyle(NeumorphicButtonStyle(paddingSize: 15))
                     .padding()
                     .show(isVisible: $viewTransitionManager.showExtraButtons)
                 }

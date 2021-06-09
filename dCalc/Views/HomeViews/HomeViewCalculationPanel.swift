@@ -17,10 +17,10 @@ struct HomeViewCalculationPanel: View {
     var body: some View {
 
             HStack {
-                HomeViewCalculateButton(colorScheme: colorScheme)
+                HomeViewCalculateButton()
                 
                 Spacer()
-                HomeViewCalculationLabel(dosage: $calculationManager.dosage, colorScheme: colorScheme)
+                HomeViewCalculationLabel(dosage: $calculationManager.dosage)
                
             }
             .padding(.horizontal, 10)

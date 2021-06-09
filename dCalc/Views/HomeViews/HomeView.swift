@@ -18,7 +18,8 @@ struct HomeView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            
+            // todo: check .background on zstack
+            // todo: check .aspectration instad of using geomtryReader for making things take up a certain size of a view
             ZStack {
                 
                 colorScheme == .light ? Color.whiteStart : Color.darkEnd
@@ -30,7 +31,7 @@ struct HomeView: View {
                     
                     Spacer()
                         .frame(height: geometry.size.height * 0.1)
-                    
+
                     HomeViewSliderPanel(calculationManager: calculationManager, viewTransitionManager: viewTransitionManager)
                     
                     Spacer()
