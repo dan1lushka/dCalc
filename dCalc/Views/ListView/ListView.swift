@@ -17,10 +17,6 @@ struct ListView: View {
     
     GeometryReader { geo in
       
-      ZStack {
-        
-        colorScheme == .light ? Color.whiteStart : Color.darkEnd
-        
         VStack {
           ViewHeader(width: geo.size.width * 0.95, text: "List")
           
@@ -33,7 +29,7 @@ struct ListView: View {
             }
           }
         }
-      }
+        .background(colorScheme == .light ? Color.whiteStart : Color.darkEnd)
     }
     .edgesIgnoringSafeArea(.all)
   }

@@ -22,8 +22,6 @@ struct HomeView: View {
             // todo: check .aspectration instad of using geomtryReader for making things take up a certain size of a view
             ZStack {
                 
-                colorScheme == .light ? Color.whiteStart : Color.darkEnd
-                
                 VStack {
                     ViewHeader(width: geometry.size.width * 0.95, text: "Home")
                     
@@ -53,6 +51,7 @@ struct HomeView: View {
                         popupViewManager: popupViewManager)
                     .show(isVisible: $viewTransitionManager.showPopup)
             }
+            .background(colorScheme == .light ? Color.whiteStart : Color.darkEnd)
         }
         .edgesIgnoringSafeArea(.all)
         .onTapGesture {
