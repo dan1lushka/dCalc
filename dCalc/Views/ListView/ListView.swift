@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListView: View {
   
-  @ObservedObject var calculationManager: CalculationManager
+  @EnvironmentObject var calculationManager: CalculationManager
   
   @Environment(\.colorScheme) var colorScheme: ColorScheme
   
@@ -17,19 +17,19 @@ struct ListView: View {
     
     GeometryReader { geo in
       
-        VStack {
-          ViewHeader(width: geo.size.width * 0.95, text: "List")
-          
-          ScrollView {
-            VStack(spacing: 2) {
-              ForEach(calculationManager.consumedFoodItems.items) { item in
-                RowContent(items: $calculationManager.consumedFoodItems.items, colorScheme: colorScheme, item: item)
-                  .frame(height: 100)
-              }
+      VStack {
+        ViewHeader(width: geo.size.width * 0.95, text: "List")
+        
+        ScrollView {
+          VStack(spacing: 2) {
+            ForEach(calculationManager.consumedFoodItems.items) { item in
+              RowContent(items: $calculationManager.consumedFoodItems.items, colorScheme: colorScheme, item: item)
+                .frame(height: 100)
             }
           }
         }
-        .background(colorScheme == .light ? Color.whiteStart : Color.darkEnd)
+      }
+      .background(colorScheme == .light ? Color.whiteStart : Color.darkEnd)
     }
     .edgesIgnoringSafeArea(.all)
   }
@@ -118,6 +118,7 @@ struct RowContent: View {
 
 struct ListView_Previews: PreviewProvider {
   static var previews: some View {
-    ListView(calculationManager: CalculationManager())
+    ListView()
+      .environmentObject(CalculationManager())
   }
 }

@@ -11,10 +11,10 @@ struct PopupView: View {
   
   @Environment(\.colorScheme) var colorScheme: ColorScheme
   
-  @ObservedObject var calculationManager: CalculationManager
-  @ObservedObject var viewTransitionManager: ViewTransitionManager
-  @ObservedObject var networkingManager: NetworkingManager
-  @ObservedObject var popupViewManager: PopupViewManager
+  @EnvironmentObject var calculationManager: CalculationManager
+  @EnvironmentObject var viewTransitionManager: ViewTransitionManager
+  @EnvironmentObject var networkingManager: NetworkingManager
+  @EnvironmentObject var popupViewManager: PopupViewManager
   
   var body: some View {
     
@@ -29,34 +29,15 @@ struct PopupView: View {
         }
         
         ZStack {
-          PopupViewBody(width: geo.size.width,
-                        height: geo.size.height,
-                        networkingManager: networkingManager,
-                        calculationManager: calculationManager,
-                        popupViewManager: popupViewManager
-          )
-          
-          PopupAutoCompleteView(height: geo.size.height,
-                                width: geo.size.width,
-                                calculationManager: calculationManager,
-                                popupViewManager: popupViewManager,
-                                networkingManager: networkingManager,
-                                isEditingProductName: $popupViewManager.isEditingProductName
-          )
+          PopupViewBody(width: geo.size.width, height: geo.size.height)
+          PopupAutoCompleteView(height: geo.size.height, width: geo.size.width, isEditingProductName: $popupViewManager.isEditingProductName)
         }
         
         popupClearRectangle(size: geo.size.height * 0.15)
         
         HStack(spacing: geo.size.width / 2.5) {
-          PopupSaveButtonView(calculationManager: calculationManager,
-                              viewTransitionManager: viewTransitionManager,
-                              popupViewManager: popupViewManager
-          )
-          
-          PopupCancelButtonView(calculationManager: calculationManager,
-                                viewTransitionManager: viewTransitionManager,
-                                popupViewManager: popupViewManager
-          )
+          PopupSaveButtonView()
+          PopupCancelButtonView()
         }
         .padding(.bottom, 50)
         
@@ -93,9 +74,10 @@ struct PopupView: View {
 
 struct HomeViewAddPopUp_Previews: PreviewProvider {
   static var previews: some View {
-    PopupView(calculationManager: CalculationManager(),
-              viewTransitionManager: ViewTransitionManager(),
-              networkingManager: NetworkingManager(),
-              popupViewManager: PopupViewManager())
+    PopupView()
+      .environmentObject(CalculationManager())
+      .environmentObject(ViewTransitionManager())
+      .environmentObject(NetworkingManager())
+      .environmentObject(PopupViewManager())
   }
 }

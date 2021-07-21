@@ -11,9 +11,9 @@ struct PopupSearchButtonView: View {
   
   @Environment(\.colorScheme) var colorScheme: ColorScheme
   
-  @ObservedObject var networkingManager: NetworkingManager
-  @ObservedObject var calculationManager: CalculationManager
-  @ObservedObject var popupViewManager: PopupViewManager
+  @EnvironmentObject var networkingManager: NetworkingManager
+  @EnvironmentObject var calculationManager: CalculationManager
+  @EnvironmentObject var popupViewManager: PopupViewManager
   
   var body: some View {
     Button(action: {
@@ -64,9 +64,9 @@ struct PopupSearchButtonView: View {
 
 struct PopupSearchButtonView_Previews: PreviewProvider {
   static var previews: some View {
-    PopupSearchButtonView(networkingManager: NetworkingManager(),
-                          calculationManager: CalculationManager(),
-                          popupViewManager: PopupViewManager()
-    )
+    PopupSearchButtonView()
+      .environmentObject(NetworkingManager())
+      .environmentObject(CalculationManager())
+      .environmentObject(PopupViewManager())
   }
 }

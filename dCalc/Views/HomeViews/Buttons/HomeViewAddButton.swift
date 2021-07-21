@@ -11,7 +11,7 @@ struct HomeViewAddButton: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
-    @ObservedObject var viewTransitionManager: ViewTransitionManager
+    @EnvironmentObject var viewTransitionManager: ViewTransitionManager
 
     var body: some View {
       Button {
@@ -46,6 +46,7 @@ struct HomeViewAddButton: View {
 
 struct HomeViewAddButton_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewAddButton(viewTransitionManager: ViewTransitionManager())
+        HomeViewAddButton()
+        .environmentObject(ViewTransitionManager())
     }
 }

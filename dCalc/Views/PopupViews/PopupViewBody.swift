@@ -9,13 +9,14 @@ import SwiftUI
 
 struct PopupViewBody: View {
   
-  @Environment(\.colorScheme) var colorScheme: ColorScheme
   var width: CGFloat
   var height: CGFloat
   
-  @ObservedObject var networkingManager: NetworkingManager
-  @ObservedObject var calculationManager: CalculationManager
-  @ObservedObject var popupViewManager: PopupViewManager
+  @Environment(\.colorScheme) var colorScheme: ColorScheme
+  
+  @EnvironmentObject var calculationManager: CalculationManager
+  @EnvironmentObject var networkingManager: NetworkingManager
+  @EnvironmentObject var popupViewManager: PopupViewManager
   
   var body: some View {
     ZStack {
@@ -75,44 +76,39 @@ struct PopupViewBody: View {
       
       popupTextfield(text: $calculationManager.grammsPer100g, keyboard: .numberPad)
       
-      PopupSearchButtonView(networkingManager: networkingManager,
-                            calculationManager: calculationManager,
-                            popupViewManager: popupViewManager
-      )
+      PopupSearchButtonView()
     }
     .padding()
   }
-  // todo: check focusState button containing textifield
+  // todo: check focusState button containing textfield
   // todo: Check if the textfield tappable area can be changed without increasing the scale effect or font size
   func popupTextfield(text: Binding<String>, keyboard: UIKeyboardType) -> some View {
     return TextField("", text: text, onCommit: {
       popupViewManager.isEditingProductName = false
     })
-    .onChange(of: text.wrappedValue, perform: { _ in
-      networkingManager.loadData(ingredient: text.wrappedValue, objectType: AutoCompleteResponse.self) {
-        if let response = networkingManager.response as? AutoCompleteResponse {
-          popupViewManager.autoCompleteList = response
-          print(popupViewManager.autoCompleteList)
+      .onChange(of: text.wrappedValue, perform: { _ in
+        networkingManager.loadData(ingredient: text.wrappedValue, objectType: AutoCompleteResponse.self) {
+          if let response = networkingManager.response as? AutoCompleteResponse {
+            popupViewManager.autoCompleteList = response
+            print(popupViewManager.autoCompleteList)
+          }
         }
-      }
-    })
-    .padding()
-    .scaleEffect(x: 2, y: 2)
-    .background(colorScheme == .dark ? Color.darkStart : Color.whiteEnd)
-    .cornerRadius(15)
-    .keyboardType(keyboard)
-    .disableAutocorrection(true)
+      })
+      .padding()
+      .scaleEffect(x: 2, y: 2)
+      .background(colorScheme == .dark ? Color.darkStart : Color.whiteEnd)
+      .cornerRadius(15)
+      .keyboardType(keyboard)
+      .disableAutocorrection(true)
   }
 }
 
 struct PopupViewBody_Previews: PreviewProvider {
   static var previews: some View {
-    PopupViewBody(width: 300,
-                  height: 300,
-                  networkingManager: NetworkingManager(),
-                  calculationManager: CalculationManager(),
-                  popupViewManager: PopupViewManager()
-    )
+    PopupViewBody(width: 300, height: 300)
+      .environmentObject(CalculationManager())
+      .environmentObject(NetworkingManager())
+      .environmentObject(PopupViewManager())
       .background(NeumorphicBackground(isHighlighted: false, shape: Rectangle()))
       .font(.system(size: 12, weight: .bold))
       .foregroundColor(.cornBlue)

@@ -8,29 +8,31 @@
 import SwiftUI
 
 struct HomeViewCalculationPanel: View {
+  
+  @Environment(\.colorScheme) var colorScheme: ColorScheme
+  
+  @EnvironmentObject var calculationManager: CalculationManager
+  @EnvironmentObject var viewTransitionManager: ViewTransitionManager
+  
+  var body: some View {
     
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
-    @ObservedObject var calculationManager: CalculationManager
-    @ObservedObject var viewTransitionManager: ViewTransitionManager
-    
-    var body: some View {
-
-            HStack {
-                HomeViewCalculateButton()
-                
-                Spacer()
-                HomeViewCalculationLabel(dosage: $calculationManager.dosage)
-               
-            }
-            .padding(.horizontal, 10)
+    HStack {
+      HomeViewCalculateButton()
+      
+      Spacer()
+      HomeViewCalculationLabel(dosage: $calculationManager.dosage)
+      
     }
+    .padding(.horizontal, 10)
+  }
 }
 
 struct HomeViewCalculationTab_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            HomeViewCalculationPanel(calculationManager: CalculationManager(), viewTransitionManager: ViewTransitionManager())
-        }
+  static var previews: some View {
+    Group {
+      HomeViewCalculationPanel()
+        .environmentObject(CalculationManager())
+        .environmentObject(ViewTransitionManager())
     }
+  }
 }

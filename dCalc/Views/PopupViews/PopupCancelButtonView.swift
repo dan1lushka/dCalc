@@ -9,9 +9,9 @@ import SwiftUI
 
 struct PopupCancelButtonView: View {
   
-  @ObservedObject var calculationManager: CalculationManager
-  @ObservedObject var viewTransitionManager: ViewTransitionManager
-  @ObservedObject var popupViewManager: PopupViewManager
+  @EnvironmentObject var calculationManager: CalculationManager
+  @EnvironmentObject var viewTransitionManager: ViewTransitionManager
+  @EnvironmentObject var popupViewManager: PopupViewManager
   
   @Environment(\.colorScheme) var colorScheme: ColorScheme
   
@@ -29,9 +29,9 @@ struct PopupCancelButtonView: View {
 
 struct PopupCancelButtonView_Previews: PreviewProvider {
   static var previews: some View {
-    PopupCancelButtonView(calculationManager: CalculationManager(),
-                          viewTransitionManager: ViewTransitionManager(),
-                          popupViewManager: PopupViewManager()
-    )
+    PopupCancelButtonView()
+      .environmentObject(CalculationManager())
+      .environmentObject(ViewTransitionManager())
+      .environmentObject(PopupViewManager())
   }
 }
