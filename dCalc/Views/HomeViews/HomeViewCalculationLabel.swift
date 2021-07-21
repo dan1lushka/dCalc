@@ -9,12 +9,12 @@ import SwiftUI
 
 struct HomeViewCalculationLabel: View {
     
-    @Binding var dosage: Int
+    @EnvironmentObject var calculationManager: CalculationManager
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
-        Text("\(String(dosage)) \(dosage == 1 ? "unit" : "units")")
+      Text("\(String(calculationManager.dosage)) \(calculationManager.dosage == 1 ? "unit" : "units")")
             .padding()
             .font(.system(size: 15, weight: .bold))
             .foregroundColor(.cornBlue)
@@ -26,6 +26,7 @@ struct HomeViewCalculationLabel: View {
 
 struct HomeViewCalculationLabel_Previews: PreviewProvider {
     static var previews: some View {
-      HomeViewCalculationLabel(dosage: .constant(2))
+      HomeViewCalculationLabel()
+        .environmentObject(CalculationManager())
     }
 }

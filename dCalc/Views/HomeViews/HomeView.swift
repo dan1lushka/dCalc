@@ -11,10 +11,7 @@ struct HomeView: View {
   
   @Environment(\.colorScheme) var colorScheme: ColorScheme
   
-  @EnvironmentObject var calculationManager: CalculationManager
   @EnvironmentObject var viewTransitionManager: ViewTransitionManager
-  @EnvironmentObject var networkingManager: NetworkingManager
-  @EnvironmentObject var popupViewManager: PopupViewManager
   
   var body: some View {
     GeometryReader { geometry in
@@ -60,9 +57,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
   static var previews: some View {
     HomeView()
-      .environmentObject(CalculationManager())
       .environmentObject(ViewTransitionManager())
-      .environmentObject(NetworkingManager())
-      .environmentObject(PopupViewManager())
   }
 }

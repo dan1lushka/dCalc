@@ -9,11 +9,6 @@ import SwiftUI
 
 struct PopupView: View {
   
-  @Environment(\.colorScheme) var colorScheme: ColorScheme
-  
-  @EnvironmentObject var calculationManager: CalculationManager
-  @EnvironmentObject var viewTransitionManager: ViewTransitionManager
-  @EnvironmentObject var networkingManager: NetworkingManager
   @EnvironmentObject var popupViewManager: PopupViewManager
   
   var body: some View {
@@ -75,9 +70,6 @@ struct PopupView: View {
 struct HomeViewAddPopUp_Previews: PreviewProvider {
   static var previews: some View {
     PopupView()
-      .environmentObject(CalculationManager())
-      .environmentObject(ViewTransitionManager())
-      .environmentObject(NetworkingManager())
       .environmentObject(PopupViewManager())
   }
 }

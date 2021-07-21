@@ -12,11 +12,8 @@ struct PopupAutoCompleteView: View {
   var height: CGFloat
   var width: CGFloat
   
-  @Environment(\.colorScheme) var colorScheme: ColorScheme
-  
   @EnvironmentObject var calculationManager: CalculationManager
   @EnvironmentObject var popupViewManager: PopupViewManager
-  @EnvironmentObject var networkingManager: NetworkingManager
   
   @Binding var isEditingProductName: Bool
   

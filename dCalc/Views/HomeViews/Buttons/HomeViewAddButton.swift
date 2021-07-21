@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct HomeViewAddButton: View {
-    
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+
     @EnvironmentObject var viewTransitionManager: ViewTransitionManager
 
     var body: some View {

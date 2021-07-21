@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct HomeViewCalculateButton: View {
-  @Environment(\.colorScheme) var colorScheme: ColorScheme
-  
+
   var body: some View {
     Button {
       print("Calculate button tapped action ")

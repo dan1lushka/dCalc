@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct NeumorphicSlider: View {
-    
-    @ObservedObject var viewTransitionManager: ViewTransitionManager
-    
+
     let okRange = 4.0 ..< 11.0
     var range: ClosedRange<Double>
     var label: String
@@ -37,8 +35,7 @@ struct NeumorphicSlider_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             LinearGradient( .whiteStart, .whiteEnd)
-            NeumorphicSlider(viewTransitionManager: ViewTransitionManager(),
-                             range: 2.0 ... 40.0,
+            NeumorphicSlider(range: 2.0 ... 40.0,
                              label: "Sugar Level",
                              step: 0.1,
                              unitsOfMeasure: "mmol",

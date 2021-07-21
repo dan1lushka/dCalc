@@ -12,9 +12,7 @@ struct PopupSaveButtonView: View {
   @EnvironmentObject var calculationManager: CalculationManager
   @EnvironmentObject var viewTransitionManager: ViewTransitionManager
   @EnvironmentObject var popupViewManager: PopupViewManager
-  
-  @Environment(\.colorScheme) var colorScheme: ColorScheme
-  
+
   var body: some View {
     
     Button {
