@@ -24,7 +24,11 @@ struct PopupView: View {
         }
         
         ZStack {
-          PopupViewBody(width: geo.size.width, height: geo.size.height)
+          if #available(iOS 15.0, *) {
+            PopupViewBody(width: geo.size.width, height: geo.size.height)
+          } else {
+            // Fallback on earlier versions
+          }
           PopupAutoCompleteView(height: geo.size.height, width: geo.size.width, isEditingProductName: $popupViewManager.isEditingProductName)
         }
         
