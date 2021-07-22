@@ -20,7 +20,7 @@ struct PopupViewBody: View {
   
   var body: some View {
     ZStack {
-      VStack {
+      Form {
         productNameSecion
         Divider()
         

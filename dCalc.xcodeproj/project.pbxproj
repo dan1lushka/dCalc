@@ -137,12 +137,11 @@
 		C8A93ACE260416E900912C35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C8A93AD6260418A200912C35 /* HomeViews */,
 				C8D6CD61261722DC005BD734 /* PopupViews */,
 				C8C9D2312609F7C800A595F1 /* ListView */,
-				C8E3D1712606341E0001479F /* NeumorphicViews */,
 				C8F0570C2604ED6D002A8C39 /* MainViews */,
 				C8A93ADB260418CB00912C35 /* Util */,
-				C8A93AD6260418A200912C35 /* HomeViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -162,6 +161,7 @@
 		C8A93ADB260418CB00912C35 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				C8E3D1712606341E0001479F /* NeumorphicViews */,
 				C8A93ADC2604190A00912C35 /* ViewExtensions.swift */,
 				C8F0571326058279002A8C39 /* ShowModifier.swift */,
 				C81D8EB2261681A50014869C /* AdaptsToKeyboardViewModifier.swift */,
